@@ -1,0 +1,135 @@
+{
+  "site": {
+    "title": "renk",
+    "description": "renk - Music group that stands out with original music and performances",
+    "keywords": "music, band, renk, concert, song, musician, art"
+  },
+  "navigation": {
+    "brand": "",
+    "items": [
+      {
+        "href": "#home",
+        "text": "Home"
+      },
+      {
+        "href": "#about",
+        "text": "Renk"
+      },
+      {
+        "href": "#news",
+        "text": "News"
+      },
+      {
+        "href": "#music",
+        "text": "Listen to Renk"
+      }
+    ]
+  },
+  "hero": {
+    "title": " ",
+    "titleHighlight": " ",
+    "subtitle": " ",
+    "videoSource": "assets/img/renk.mp4",
+    "countdown": {
+      "enabled": true,
+      "targetDate": "2025-09-12T00:00:00",
+      "title": "Time left to Mükemmel Tekdüze",
+      "description": " "
+    },
+    "socialMedia": {
+      "instagram": {
+        "url": "https://www.instagram.com/renkofficial",
+        "label": "Instagram"
+      },
+      "facebook": {
+        "url": "https://www.facebook.com/Official.Renk",
+        "label": "Facebook"
+      },
+      "spotify": {
+        "url": "https://open.spotify.com/artist/6YZaLDbJe7y0qfFp4CnH4K?si=NdCH2CC4SMWyZawVdampUA",
+        "label": "Spotify"
+      },
+      "youtube": {
+        "url": "https://www.youtube.com/@renkofficial8596",
+        "label": "YouTube"
+      }
+    }
+  },
+  "about": {
+    "title": "Renk",
+    "subtitle": " ",
+    "description": "<b>art-rock band pushing the boundaries of music</b>",
+    "extendedDescription": "<p><b>Renk</b> is an <b>art-rock band</b> whose songs are a blend of melancholic and aggressive compositions with psychedelic elements. With an emphasis on visual experience as much as the musical, Renk strives to transmit emotions in every medium available.</p><br><p>The band's first single <b>'Sonsuz Karmaşa'</b> was released in 2016. The same year, the band made its <b>international debut in Gdansk, Poland</b> after touring the metropolitan cities of Turkey including Ankara, Istanbul, Eskişehir and Antalya.</p><br><p>Their latest release, <b>'Kıyı'</b>, shines as one of rare concept albums released in recent years. From hopeful melodies and dark ambient drones to uplifting progressive narratives and existential lyrics, Renk tells a <b>60 minutes long story of unhomeliness and estrangement with the world</b>.</p><br><h5><b>Band Members:</b></h5><p><b>Anıl Kahvecioğlu</b> - Vocals and Guitars<br><b>Gökhan Şensönmez</b> - Guitars<br><b>Kemal Türkeri</b> - Bass Guitars<br><b>Ekin Özek</b> - Saxophone & Keys<br><b>Eren Özgün</b> - Drums</p>"
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Latest developments and announcements from Renk",
+    "items": [
+      {
+        "title": "Our Acoustic Concert at Kült Kavaklıdere!",
+        "date": "August 15, 2025",
+        "description": "After a long period of work, our new album 'Renkler' has taken its place on all digital platforms. In this 10-track album, we have further developed our unique Renk sound by blending different music genres.",
+        "image": "assets/img/news-1.jpg",
+        "tags": ["Album", "New Release"]
+      },
+      {
+        "title": "Istanbul Concert Received Great Interest",
+        "date": "August 10, 2025", 
+        "description": "Our concert in Istanbul brought together thousands of music lovers. We had an unforgettable night and thank all participants.",
+        "image": "assets/img/news-2.jpg",
+        "tags": ["Concert", "Istanbul"]
+      },
+      {
+        "title": "Ankara and Izmir Concerts Announced",
+        "date": "August 5, 2025",
+        "description": "We will meet with our fans in Ankara and Izmir in September. Tickets will be on sale very soon, stay tuned!",
+        "image": "assets/img/news-3.jpg", 
+        "tags": ["Concert", "Announcement"]
+      }
+    ]
+  },
+  "music": {
+    "title": "Listen to Renk",
+    "subtitle": "Discover RENK's musical world",
+    "spotify": {
+      "title": " ",
+      "description": " ",
+      "artistUrl": "https://open.spotify.com/artist/6YZaLDbJe7y0qfFp4CnH4K?si=NdCH2CC4SMWyZawVdampUA",
+      "buttonText": "Follow on Spotify!",
+      "embedCode": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/artist/6YZaLDbJe7y0qfFp4CnH4K?utm_source=generator&theme=0\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>"
+    },
+    "youtube": {
+      "title": " ", 
+      "description": " ",
+      "channelUrl": "https://www.youtube.com/@renkofficial8596",
+      "buttonText": "Follow on YouTube!",
+      "featuredVideo": {
+        "title": "Our Latest Video",
+        "embedCode": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/kgEgMHl6x4c?si=BDhqMxKkpGM9X6AF\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
+      }
+    },
+    "albums": [
+      {
+        "title": "Kıyı",
+        "year": "2020",
+        "description": " ",
+        "cover": "assets/img/kiyi.jpg"
+      },
+      {
+        "title": "Sonsuz Karmaşa",
+        "year": "2016", 
+        "description": " ",
+        "cover": "assets/img/sonsuz-karmasa.jpg"
+      }
+    ]
+  },
+  "common": {
+    "pageTitle": "RENK - Music Band",
+    "loading": "Loading...",
+    "readMore": "Read More",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous"
+  }
+}

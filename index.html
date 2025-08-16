@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Renk</title>
+    <meta name="description" content="Renk">
+    <meta name="keywords" content="müzik, grup, Renk, konser, şarkı, müzisyen, sanat">
+    
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts - Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/img/renk-amblem.jpg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/#home">
+                <img src="assets/img/renk-logo-white.png" alt="RENK Logo">
+                <span id="nav-brand-text"></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto" id="nav-menu">
+                    <!-- Navigation items will be loaded dynamically -->
+                </ul>
+                <div class="d-flex align-items-center ms-3">
+                    <div class="language-switcher">
+                        <button class="language-btn active" data-lang="tr" onclick="console.log('TR clicked')">TR</button>
+                        <button class="language-btn" data-lang="en" onclick="console.log('EN clicked')">EN</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <div id="main-content">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" class="d-none">
+            <div class="spinner-border" role="status">
+                <span class="visually-hidden" id="loading-text">Loading...</span>
+            </div>
+        </div>
+
+        <!-- Sections will be loaded here dynamically -->
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="assets/js/text-manager.js"></script>
+    <script src="assets/js/content-manager.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/scroll-animations.js"></script>
+    <script src="assets/js/content-loader.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    
+    <script>
+        // Global debug flag
+        window.MECRA_DEBUG = true;
+        
+        // Initialize global app object
+        window.mecraApp = {
+            textManager: null,
+            contentManager: null,
+            contentLoader: null,
+            initialized: false
+        };
+
+        // Load navigation and footer content when page loads
+        document.addEventListener('DOMContentLoaded', async function() {
+            console.log('📖 DOM Content Loaded - Starting app initialization...');
+            
+            try {
+                // Wait for scripts to be available
+                let attempts = 0;
+                const maxAttempts = 50;
+                
+                console.log('⏳ Waiting for scripts to load...');
+                while ((!window.textManager || !window.ContentManager) && attempts < maxAttempts) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    attempts++;
+                }
+                
+                if (!window.textManager || !window.ContentManager) {
+                    throw new Error('Required scripts failed to load');
+                }
+                
+                // Initialize TextManager
+                console.log('🔧 Initializing TextManager...');
+                window.mecraApp.textManager = window.textManager;
+                await window.mecraApp.textManager.loadTexts();
+                console.log('✅ TextManager ready');
+                
+                // Initialize ContentManager
+                console.log('🔧 Initializing ContentManager...');
+                window.mecraApp.contentManager = new ContentManager();
+                
+                // Wait for ContentManager to be ready
+                attempts = 0;
+                while (!window.mecraApp.contentManager?.isInitialized && attempts < 30) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                    attempts++;
+                }
+                console.log('✅ ContentManager ready');
+                
+                // Set page title
+                const pageTitle = window.mecraApp.textManager.texts?.common?.pageTitle || 'Renk';
+                document.getElementById('page-title').textContent = pageTitle;
+                document.title = pageTitle;
+                
+                // Load navigation
+                function loadNavigation() {
+                    const navData = window.mecraApp.textManager.texts.navigation;
+                    if (navData) {
+                        document.getElementById('nav-brand-text').textContent = navData.brand;
+                        
+                        const navMenu = document.getElementById('nav-menu');
+                        let navHTML = '';
+                        navData.items.forEach(item => {
+                            navHTML += `<li class="nav-item"><a class="nav-link" href="${item.href}">${item.text}</a></li>`;
+                        });
+                        navMenu.innerHTML = navHTML;
+                    }
+                }
+                
+                // Load navigation
+                loadNavigation();
+                
+                // Listen for language changes
+                document.addEventListener('languageChanged', function(event) {
+                    console.log('🔄 Language changed - updating navigation');
+                    loadNavigation();
+                });
+                
+                // Set loading text
+                const loadingText = window.mecraApp.textManager.texts?.common?.loading || 'Loading...';
+                document.getElementById('loading-text').textContent = loadingText;
+                
+                // Initialize ContentLoader
+                console.log('🚀 Starting ContentLoader...');
+                if (typeof ContentLoader !== 'undefined') {
+                    window.mecraApp.contentLoader = new ContentLoader();
+                    console.log('✅ ContentLoader initialized');
+                } else {
+                    console.error('❌ ContentLoader class not found');
+                }
+                
+                // Mark as initialized
+                window.mecraApp.initialized = true;
+                console.log('🎉 App initialization complete!');
+                
+                // Update active language button
+                setTimeout(() => {
+                    if (typeof window.updateActiveLanguageButton === 'function') {
+                        window.updateActiveLanguageButton();
+                    }
+                }, 500);
+                
+            } catch (error) {
+                console.error('❌ Error initializing application:', error);
+                
+                // Show error message to user
+                const mainContent = document.getElementById('main-content');
+                if (mainContent) {
+                    mainContent.innerHTML = `
+                        <div class="container mt-5 pt-5">
+                            <div class="alert alert-danger text-center">
+                                <h4>Loading Error</h4>
+                                <p>There was an issue loading the website. Please refresh the page.</p>
+                                <button class="btn btn-primary" onclick="location.reload()">Refresh Page</button>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
