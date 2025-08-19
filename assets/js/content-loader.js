@@ -4,7 +4,7 @@ class ContentLoader {
         this.sections = [
             { id: 'home', active: true },
             { id: 'about', active: false },
-            { id: 'news', active: false },
+            //{ id: 'news', active: true }, // Activated for Instagram feed
             { id: 'music', active: false }
         ];
         
