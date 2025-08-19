@@ -127,9 +127,9 @@ h1, h2, h3, h4, h5, h6, p, span, div, a, li, label, .text-dark {
 }
 
 /* Navigation overrides */
-.navbar {
+/* .navbar {
     background-color: var(--color-background) !important;
-}
+} */
 
 .navbar-brand, .nav-link, .navbar-text {
     color: var(--color-text-dark) !important;
@@ -1419,7 +1419,7 @@ section#about.content-section {
     
     .navbar-nav {
         flex-direction: column !important;
-        background: var(--color-primary) !important;
+        background: var(--color-background) !important;
         margin-top: 1rem !important;
         padding: 1rem !important;
         border-radius: 8px;
