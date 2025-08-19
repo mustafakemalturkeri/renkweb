@@ -16,10 +16,6 @@
         "text": "Renk"
       },
       {
-        "href": "#news",
-        "text": "News"
-      },
-      {
         "href": "#music",
         "text": "Listen to Renk"
       }
@@ -34,7 +30,13 @@
       "enabled": true,
       "targetDate": "2025-09-12T00:00:00",
       "title": "Time left to Mükemmel Tekdüze",
-      "description": " "
+      "description": " ",
+      "labels": {
+        "days": "Days",
+        "hours": "Hours",
+        "minutes": "Minutes",
+        "seconds": "Seconds"
+      }
     },
     "socialMedia": {
       "instagram": {

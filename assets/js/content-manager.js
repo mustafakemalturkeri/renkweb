@@ -75,19 +75,19 @@ class ContentManager {
                                     <div class="countdown-timer" data-target="${heroData.countdown.targetDate}" data-aos="fade-up" data-aos-delay="1800">
                                         <div class="countdown-item">
                                             <span class="countdown-number" id="days">00</span>
-                                            <span class="countdown-label">Gün</span>
+                                            <span class="countdown-label" id="days-label">${heroData.countdown.labels ? heroData.countdown.labels.days : 'Gün'}</span>
                                         </div>
                                         <div class="countdown-item">
                                             <span class="countdown-number" id="hours">00</span>
-                                            <span class="countdown-label">Saat</span>
+                                            <span class="countdown-label" id="hours-label">${heroData.countdown.labels ? heroData.countdown.labels.hours : 'Saat'}</span>
                                         </div>
                                         <div class="countdown-item">
                                             <span class="countdown-number" id="minutes">00</span>
-                                            <span class="countdown-label">Dakika</span>
+                                            <span class="countdown-label" id="minutes-label">${heroData.countdown.labels ? heroData.countdown.labels.minutes : 'Dakika'}</span>
                                         </div>
                                         <div class="countdown-item">
                                             <span class="countdown-number" id="seconds">00</span>
-                                            <span class="countdown-label">Saniye</span>
+                                            <span class="countdown-label" id="seconds-label">${heroData.countdown.labels ? heroData.countdown.labels.seconds : 'Saniye'}</span>
                                         </div>
                                     </div>
                                 </div>

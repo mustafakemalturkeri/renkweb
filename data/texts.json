@@ -16,10 +16,6 @@
         "text": "Renk"
       },
       {
-        "href": "#news",
-        "text": "Haberler"
-      },
-      {
         "href": "#music",
         "text": "Renk'i Dinleyin"
       }
@@ -34,7 +30,13 @@
       "enabled": true,
       "targetDate": "2025-09-12T00:00:00",
       "title": "Mükemmel Tekdüze'ye kalan süre",
-      "description": " "
+      "description": " ",
+      "labels": {
+        "days": "Gün",
+        "hours": "Saat",
+        "minutes": "Dakika",
+        "seconds": "Saniye"
+      }
     },
     "socialMedia": {
       "instagram": {
@@ -90,7 +92,7 @@
   },
   "music": {
     "title": "Renk'i Dinleyin",
-    "subtitle": "RENK'in müzik dünyasını keşfedin",
+    "subtitle": " ",
     "spotify": {
       "title": " ",
       "description": " ",
