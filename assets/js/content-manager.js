@@ -602,26 +602,29 @@ class ContentManager {
             
             <!-- Albums Section -->
             <div class="albums-section">
-                <h3 class="text-center mb-4">Albümlerimiz</h3>
+                <h3 class="text-center mb-4">${musicData.albumsTitle || 'Albümlerimiz'}</h3>
                 <div class="row">
         `;
         
         if (musicData.albums) {
             musicData.albums.forEach((album, index) => {
-                html += `
+                const albumContent = `
                     <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-                        <div class="album-card">
+                        <div class="album-card${album.spotifyUrl ? ' clickable-album' : ''}" ${album.spotifyUrl ? `onclick="window.open('${album.spotifyUrl}', '_blank')" style="cursor: pointer;"` : ''}>
                             <div class="album-cover">
                                 <img src="${album.cover}" alt="${album.title}" class="img-fluid">
+                                ${album.spotifyUrl ? `<div class="album-overlay"><i class="fab fa-spotify"></i><span>${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</span></div>` : ''}
                             </div>
                             <div class="album-info">
                                 <h5 class="album-title">${album.title}</h5>
                                 <p class="album-year">${album.year}</p>
                                 <p class="album-description">${album.description}</p>
+                                ${album.spotifyUrl ? `<a href="${album.spotifyUrl}" target="_blank" class="btn btn-spotify btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-spotify"></i> ${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</a>` : ''}
                             </div>
                         </div>
                     </div>
                 `;
+                html += albumContent;
             });
         }
         

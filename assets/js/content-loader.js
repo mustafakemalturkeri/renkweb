@@ -4,7 +4,7 @@ class ContentLoader {
         this.sections = [
             { id: 'home', active: true },
             { id: 'about', active: false },
-            //{ id: 'news', active: true }, // Activated for Instagram feed
+            { id: 'news', active: true }, // Activated for Instagram feed
             { id: 'music', active: false }
         ];
         
@@ -807,6 +807,11 @@ class ContentLoader {
             const newsHTML = window.contentManager.generateNewsHTML();
             newsContent.innerHTML = newsHTML;
             console.log('News content loaded successfully');
+            
+            // Dispatch section loaded event for Instagram Manager
+            document.dispatchEvent(new CustomEvent('sectionLoaded', {
+                detail: { section: 'news' }
+            }));
         } else {
             console.warn('News content element not found or ContentManager not available');
         }

@@ -4359,3 +4359,66 @@ section#about.content-section {
         padding: 1rem 0;
     }
 }
+
+/* Clickable Album Cards */
+.album-card.clickable-album {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.album-card.clickable-album:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.album-cover {
+    position: relative;
+    overflow: hidden;
+}
+
+.album-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(30, 215, 96, 0.9); /* Spotify green */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    font-weight: bold;
+}
+
+.album-overlay i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.album-overlay span {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.clickable-album:hover .album-overlay {
+    opacity: 1;
+}
+
+.album-card .btn-spotify {
+    background: #1ed760;
+    border-color: #1ed760;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.album-card .btn-spotify:hover {
+    background: #1db954;
+    border-color: #1db954;
+    color: white;
+    transform: translateY(-2px);
+}

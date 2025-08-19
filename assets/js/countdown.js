@@ -56,43 +56,10 @@ class CountdownTimer {
         const minutesEl = element.querySelector('#minutes');
         const secondsEl = element.querySelector('#seconds');
 
-        // Update numbers
         if (daysEl) daysEl.textContent = this.padZero(days);
         if (hoursEl) hoursEl.textContent = this.padZero(hours);
         if (minutesEl) minutesEl.textContent = this.padZero(minutes);
         if (secondsEl) secondsEl.textContent = this.padZero(seconds);
-
-        // Update labels with multilingual support
-        this.updateLabels(element);
-    }
-
-    updateLabels(element) {
-        // Get countdown labels from text manager
-        let labels = {
-            days: "Gün",
-            hours: "Saat", 
-            minutes: "Dakika",
-            seconds: "Saniye"
-        };
-
-        // Try to get labels from text manager if available
-        if (window.textManager && window.textManager.isLoaded) {
-            const heroData = window.textManager.getText('hero');
-            if (heroData && heroData.countdown && heroData.countdown.labels) {
-                labels = heroData.countdown.labels;
-            }
-        }
-
-        // Update label texts
-        const daysLabel = element.querySelector('#days-label');
-        const hoursLabel = element.querySelector('#hours-label');
-        const minutesLabel = element.querySelector('#minutes-label');
-        const secondsLabel = element.querySelector('#seconds-label');
-
-        if (daysLabel) daysLabel.textContent = labels.days;
-        if (hoursLabel) hoursLabel.textContent = labels.hours;
-        if (minutesLabel) minutesLabel.textContent = labels.minutes;
-        if (secondsLabel) secondsLabel.textContent = labels.seconds;
     }
 
     padZero(num) {

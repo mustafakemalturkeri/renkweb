@@ -93,6 +93,8 @@
   "music": {
     "title": "Renk'i Dinleyin",
     "subtitle": " ",
+    "albumsTitle": "Albümlerimiz",
+    "spotifyButtonText": "Spotify'da Dinle",
     "spotify": {
       "title": " ",
       "description": " ",
@@ -115,13 +117,15 @@
         "title": "Kıyı",
         "year": "2020",
         "description": " ",
-        "cover": "assets/img/kiyi.jpg"
+        "cover": "assets/img/kiyi.jpg",
+        "spotifyUrl": "https://open.spotify.com/album/6PeoxRdSlmnG9Kh2NIxwX6?si=FbCUD7I7QsyqHo6xRizveg"
       },
       {
         "title": "Sonsuz Karmaşa",
         "year": "2016", 
         "description": " ",
-        "cover": "assets/img/sonsuz-karmasa.jpg"
+        "cover": "assets/img/sonsuz-karmasa.jpg",
+        "spotifyUrl": "https://open.spotify.com/album/5xKCpqIfzJOIJ9TNDFapfD?si=IpNvF8s2QASof3Tk7zOP3g"
       }
     ]
   },
