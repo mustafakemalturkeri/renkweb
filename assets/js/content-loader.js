@@ -4,6 +4,8 @@ class ContentLoader {
         this.sections = [
             { id: 'home', active: true },
             { id: 'about', active: false },
+            { id: 'concerts', active: true },
+            { id: 'gallery', active: true },
             //{ id: 'news', active: true }, // Activated for Instagram feed
             { id: 'music', active: false }
         ];
@@ -294,6 +296,32 @@ class ContentLoader {
                     </section>
                 `;
             
+            case 'concerts':
+                return `
+                    <section class="section py-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12" id="concerts-content">
+                                    <!-- Content will be loaded dynamically via JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
+            
+            case 'gallery':
+                return `
+                    <section class="section py-5">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12" id="gallery-content">
+                                    <!-- Gallery content will be loaded dynamically via JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                `;
+            
             case 'news':
                 return `
                     <section class="section py-5">
@@ -365,6 +393,12 @@ class ContentLoader {
                 break;
             case 'about':
                 await this.loadAboutContent();
+                break;
+            case 'concerts':
+                await this.loadConcertsContent();
+                break;
+            case 'gallery':
+                await this.loadGalleryContent();
                 break;
             case 'news':
                 await this.loadNewsContent();
@@ -800,6 +834,24 @@ class ContentLoader {
         }
     }
 
+    async loadConcertsContent() {
+        console.log('🎵 Loading concerts content...');
+        const concertsContent = document.getElementById('concerts-content');
+        if (concertsContent && window.contentManager) {
+            const concertsHTML = window.contentManager.generateConcertsHTML();
+            console.log('🎵 Generated concerts HTML:', concertsHTML.substring(0, 200) + '...');
+            concertsContent.innerHTML = concertsHTML;
+            console.log('🎵 Concerts content loaded successfully');
+            
+            // No need for carousel initialization anymore - using simple grid layout
+            
+        } else {
+            console.warn('🎵 Concerts content element not found or ContentManager not available');
+            console.log('- concertsContent element:', concertsContent);
+            console.log('- contentManager available:', !!window.contentManager);
+        }
+    }
+
     async loadNewsContent() {
         console.log('Loading news content...');
         const newsContent = document.getElementById('news-content');
@@ -826,6 +878,20 @@ class ContentLoader {
             console.log('Music content loaded successfully');
         } else {
             console.warn('Music content element not found or ContentManager not available');
+        }
+    }
+
+    // Load gallery content
+    async loadGalleryContent() {
+        console.log('ContentLoader: Loading gallery content...');
+        
+        const galleryContent = document.getElementById('gallery-content');
+        if (galleryContent && window.contentManager) {
+            const galleryHTML = window.contentManager.generateGalleryHTML();
+            galleryContent.innerHTML = galleryHTML;
+            console.log('Gallery content loaded successfully');
+        } else {
+            console.warn('Gallery content element not found or ContentManager not available');
         }
     }
 }

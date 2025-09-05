@@ -487,6 +487,108 @@ class ContentManager {
         `;
     }
 
+    // Generate HTML for concerts section
+    generateConcertsHTML() {
+        console.log('🎵 Generating concerts HTML...');
+        
+        if (!window.textManager) {
+            console.warn('❌ TextManager not ready in generateConcertsHTML');
+            return '';
+        }
+
+        const concertsData = window.textManager.getText('concerts');
+        console.log('🎵 Concerts data:', concertsData);
+        
+        if (!concertsData) {
+            console.warn('❌ No concerts data found');
+            return '';
+        }
+
+        let concertsHtml = `
+            <section id="concerts" class="content-section py-5">
+                <div class="container">
+                    <div class="row text-center mb-5">
+                        <div class="col-12">
+                            <h2 class="section-title" data-aos="fade-up">${concertsData.title}</h2>
+                            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">${concertsData.subtitle}</p>
+                        </div>
+                    </div>
+        `;
+
+        if (concertsData.items && concertsData.items.length > 0) {
+            console.log('🎵 Found', concertsData.items.length, 'concerts');
+            
+            concertsHtml += `<div class="row justify-content-center">`;
+            
+            concertsData.items.forEach((concert, index) => {
+                const statusClass = concert.status === 'available' ? 'available' : 'coming-soon';
+                
+                concertsHtml += `
+                    <div class="col-lg-6 col-md-8 col-sm-10 mb-4" data-aos="fade-up" data-aos-delay="${index * 200}">
+                        <div class="concert-card ${statusClass}">
+                            <div class="concert-image">
+                                <img src="${concert.image}" alt="${concert.title}" class="img-fluid" onerror="this.src='assets/img/renk-headshots1.jpg'">
+                                <div class="concert-overlay">
+                                    <div class="concert-info">
+                                        <h3 class="concert-title">${concert.title}</h3>
+                                        <p class="concert-location"><i class="fas fa-map-marker-alt"></i> ${concert.location}</p>
+                                        <p class="concert-date"><i class="fas fa-calendar-alt"></i> ${concert.date} - ${concert.time}</p>
+                                        <p class="concert-venue"><i class="fas fa-building"></i> ${concert.venue}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="concert-details">
+                                <h4 class="concert-card-title">${concert.title}</h4>
+                                <p class="concert-description">${concert.description}</p>
+                                <div class="concert-meta">
+                                    <span class="concert-date-badge">
+                                        <i class="fas fa-calendar-alt"></i> ${concert.date}
+                                    </span>
+                                    <span class="concert-location-badge">
+                                        <i class="fas fa-map-marker-alt"></i> ${concert.location}
+                                    </span>
+                                </div>
+                                <div class="concert-action">
+                                    ${concert.ticketUrl && concert.ticketUrl !== '#' ? 
+                                        `<a href="${concert.ticketUrl}" target="_blank" class="btn btn-concert btn-lg mt-3">
+                                            <i class="fas fa-ticket-alt"></i> ${concert.ticketButtonText}
+                                        </a>` : 
+                                        `<button class="btn btn-concert-disabled btn-lg mt-3" disabled>
+                                            <i class="fas fa-clock"></i> ${concert.ticketButtonText}
+                                        </button>`
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            concertsHtml += `</div>`;
+            
+        } else {
+            concertsHtml += `
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="no-concerts">
+                            <i class="fas fa-music fa-3x mb-3" style="color: var(--color-secondary);"></i>
+                            <p class="lead">Yakında konser duyurularımız burada olacak!</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        concertsHtml += `
+                </div>
+            </section>
+        `;
+
+        console.log('🎵 Generated concerts HTML length:', concertsHtml.length);
+        console.log('🎵 Generated concerts HTML (first 300 chars):', concertsHtml.substring(0, 300));
+        return concertsHtml;
+    }
+
     // Generate HTML for news section
     generateNewsHTML() {
         console.log('Generating news HTML...');
@@ -608,18 +710,28 @@ class ContentManager {
         
         if (musicData.albums) {
             musicData.albums.forEach((album, index) => {
+                // Kıyı albümü için özel handling
+                const isKiyiAlbum = album.title === 'Kıyı';
+                const clickUrl = isKiyiAlbum && album.listenUrl ? album.listenUrl : album.spotifyUrl;
+                const overlayContent = isKiyiAlbum && album.listenUrl ? 
+                    `<div class="album-overlay album-overlay-kiyi"><i class="fas fa-play"></i><span>${album.listenButtonText || 'Dinle'}</span></div>` :
+                    (album.spotifyUrl ? `<div class="album-overlay"><i class="fab fa-spotify"></i><span>${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</span></div>` : '');
+                
                 const albumContent = `
                     <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-                        <div class="album-card${album.spotifyUrl ? ' clickable-album' : ''}" ${album.spotifyUrl ? `onclick="window.open('${album.spotifyUrl}', '_blank')" style="cursor: pointer;"` : ''}>
+                        <div class="album-card${clickUrl ? ' clickable-album' : ''}${isKiyiAlbum ? ' kiyi-album' : ''}" ${clickUrl ? `onclick="window.open('${clickUrl}', '_blank')" style="cursor: pointer;"` : ''}>
                             <div class="album-cover">
                                 <img src="${album.cover}" alt="${album.title}" class="img-fluid">
-                                ${album.spotifyUrl ? `<div class="album-overlay"><i class="fab fa-spotify"></i><span>${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</span></div>` : ''}
+                                ${overlayContent}
                             </div>
                             <div class="album-info">
                                 <h5 class="album-title">${album.title}</h5>
                                 <p class="album-year">${album.year}</p>
                                 <p class="album-description">${album.description}</p>
-                                ${album.spotifyUrl ? `<a href="${album.spotifyUrl}" target="_blank" class="btn btn-spotify btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-spotify"></i> ${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</a>` : ''}
+                                <div class="album-buttons">
+                                    ${album.spotifyUrl ? `<a href="${album.spotifyUrl}" target="_blank" class="btn btn-spotify btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-spotify"></i> ${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</a>` : ''}
+                                    ${album.listenUrl ? `<a href="${album.listenUrl}" target="_blank" class="btn btn-primary btn-sm mt-2" onclick="event.stopPropagation();"><i class="fas fa-play"></i> ${album.listenButtonText || 'Dinle'}</a>` : ''}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -634,6 +746,394 @@ class ContentManager {
         `;
         
         return html;
+    }
+
+    // Generate HTML for gallery section
+    generateGalleryHTML() {
+        console.log('ContentManager: Generating gallery HTML...');
+        
+        const galleryData = this.getContent('gallery');
+        if (!galleryData) {
+            console.error('ContentManager: No gallery data found');
+            return '<div>Gallery data not found</div>';
+        }
+
+        console.log('ContentManager: Gallery data loaded:', galleryData);
+
+        // Load gallery images asynchronously
+        setTimeout(() => {
+            this.loadGalleryCarousel();
+        }, 100);
+
+        return `
+            <section id="gallery" class="section">
+                <div class="container">
+                    <div class="text-center mb-5">
+                        <h2 class="section-title">${galleryData.title}</h2>
+                        <p class="section-subtitle">${galleryData.subtitle}</p>
+                        <p class="gallery-photographer">${galleryData.photographer}</p>
+                    </div>
+                    
+                    <!-- Gallery Carousel -->
+                    <div id="galleryCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <!-- Loading placeholder -->
+                        <div id="gallery-loading" class="text-center p-4">
+                            <div class="spinner-border text-secondary" role="status">
+                                <span class="visually-hidden">${this.getContent('common').loading}</span>
+                            </div>
+                            <p class="mt-2">${this.getContent('common').loading}</p>
+                        </div>
+                        
+                        <!-- Carousel indicators (will be populated) -->
+                        <div class="carousel-indicators" id="gallery-indicators" style="display: none;"></div>
+                        
+                        <!-- Carousel inner (will be populated) -->
+                        <div class="carousel-inner" id="gallery-carousel-inner" style="display: none;"></div>
+                        
+                        <!-- Carousel controls (will be shown when loaded) -->
+                        <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel" data-bs-slide="prev" style="display: none;" id="gallery-prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">${this.getContent('common').previous || 'Önceki'}</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel" data-bs-slide="next" style="display: none;" id="gallery-next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">${this.getContent('common').next || 'Sonraki'}</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Simple Image Modal -->
+                <div id="imageModal" class="custom-modal" style="display: none;">
+                    <div class="custom-modal-backdrop" onclick="window.contentManager.closeImageModal()"></div>
+                    <div class="custom-modal-content">
+                        <div class="custom-modal-header">
+                            <h5 id="imageModalTitle">Galeri</h5>
+                            <button type="button" class="custom-close-btn" onclick="window.contentManager.closeImageModal()">×</button>
+                        </div>
+                        <div class="custom-modal-body">
+                            <img id="modalImage" src="" alt="" />
+                            <div class="image-info">
+                                <p id="imageDescription"></p>
+                                <small id="imagePhotographer"></small>
+                            </div>
+                        </div>
+                        <div class="custom-modal-footer">
+                            <button type="button" class="custom-nav-btn" id="prevImageBtn">
+                                ← Önceki
+                            </button>
+                            <span id="imageCounter">1 / 1</span>
+                            <button type="button" class="custom-nav-btn" id="nextImageBtn">
+                                Sonraki →
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        `;
+    }
+
+    // Load gallery carousel asynchronously
+    async loadGalleryCarousel() {
+        console.log('Loading gallery carousel...');
+        
+        try {
+            const response = await fetch('data/gallery.json');
+            const data = await response.json();
+            
+            console.log('Gallery data loaded:', data);
+            
+            if (!data.images || data.images.length === 0) {
+                this.showGalleryError('Galeri resimleri bulunamadı');
+                return;
+            }
+            
+            this.renderCarouselImages(data.images);
+            
+        } catch (error) {
+            console.error('Error loading gallery:', error);
+            this.showGalleryError('Galeri yüklenirken hata oluştu');
+        }
+    }
+    
+    // Show gallery error
+    showGalleryError(message) {
+        const loadingEl = document.getElementById('gallery-loading');
+        if (loadingEl) {
+            loadingEl.innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i> ${message}
+                </div>
+            `;
+        }
+    }
+    
+    // Render carousel images
+    renderCarouselImages(images) {
+        const galleryData = this.getContent('gallery');
+        const imagesPerSlide = 3; // 3 images per slide
+        const totalSlides = Math.ceil(images.length / imagesPerSlide);
+        
+        const indicatorsEl = document.getElementById('gallery-indicators');
+        const carouselInnerEl = document.getElementById('gallery-carousel-inner');
+        const loadingEl = document.getElementById('gallery-loading');
+        const prevBtn = document.getElementById('gallery-prev');
+        const nextBtn = document.getElementById('gallery-next');
+        
+        if (!indicatorsEl || !carouselInnerEl) {
+            console.error('Carousel elements not found');
+            return;
+        }
+        
+        // Store images for modal functionality
+        this.galleryImages = images;
+        
+        // Clear indicators and carousel inner
+        indicatorsEl.innerHTML = '';
+        carouselInnerEl.innerHTML = '';
+        
+        // Generate indicators
+        for (let i = 0; i < totalSlides; i++) {
+            const indicator = document.createElement('button');
+            indicator.type = 'button';
+            indicator.setAttribute('data-bs-target', '#galleryCarousel');
+            indicator.setAttribute('data-bs-slide-to', i.toString());
+            if (i === 0) {
+                indicator.className = 'active';
+                indicator.setAttribute('aria-current', 'true');
+            }
+            indicator.setAttribute('aria-label', `Slide ${i + 1}`);
+            indicatorsEl.appendChild(indicator);
+        }
+        
+        // Generate carousel slides
+        for (let i = 0; i < totalSlides; i++) {
+            const start = i * imagesPerSlide;
+            const end = Math.min(start + imagesPerSlide, images.length);
+            const slideImages = images.slice(start, end);
+            
+            const carouselItem = document.createElement('div');
+            carouselItem.className = i === 0 ? 'carousel-item active' : 'carousel-item';
+            
+            let slideHTML = `
+                <div class="container">
+                    <div class="row g-4">
+            `;
+            
+            slideImages.forEach((image, slideIndex) => {
+                const globalIndex = start + slideIndex; // Global index for modal
+                slideHTML += `
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="gallery-carousel-card" data-image-index="${globalIndex}" style="cursor: pointer;">
+                            <div class="position-relative overflow-hidden">
+                                <img src="assets/img/gallery/${image.filename}" 
+                                     class="w-100" 
+                                     alt="RENK Galeri"
+                                     loading="lazy"
+                                     style="height: 280px; object-fit: cover;">
+                                <div class="gallery-overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                    <i class="fas fa-expand text-white fs-3"></i>
+                                </div>
+                            </div>
+                            <div class="p-3 text-center">
+                                <small class="text-secondary">Foto: ${image.photographer}</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            slideHTML += `
+                    </div>
+                </div>
+            `;
+            
+            carouselItem.innerHTML = slideHTML;
+            carouselInnerEl.appendChild(carouselItem);
+        }
+        
+        // Hide loading and show carousel elements
+        if (loadingEl) loadingEl.style.display = 'none';
+        indicatorsEl.style.display = 'flex';
+        carouselInnerEl.style.display = 'block';
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
+        
+        // Add click event listeners to gallery cards
+        setTimeout(() => {
+            const galleryCards = document.querySelectorAll('.gallery-carousel-card');
+            galleryCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    const imageIndex = parseInt(card.getAttribute('data-image-index'));
+                    console.log('Gallery card clicked, image index:', imageIndex);
+                    
+                    if (!isNaN(imageIndex)) {
+                        this.openImageModal(imageIndex);
+                    } else {
+                        console.error('Invalid image index:', imageIndex);
+                    }
+                });
+            });
+            console.log(`Added click listeners to ${galleryCards.length} gallery cards`);
+        }, 100);
+        
+        console.log(`Gallery carousel loaded: ${totalSlides} slides, ${images.length} images`);
+    }
+
+    // Old render function - keep for compatibility
+    renderGalleryImages(container, images, galleryData, startIndex = 0, batchSize = 12) {
+        if (startIndex === 0) {
+            container.innerHTML = '';
+        }
+
+        const endIndex = Math.min(startIndex + batchSize, images.length);
+        const batch = images.slice(startIndex, endIndex);
+
+        batch.forEach((image, index) => {
+            const actualIndex = startIndex + index;
+            const imageCard = document.createElement('div');
+            imageCard.className = 'gallery-item';
+            imageCard.setAttribute('data-aos', 'fade-up');
+            imageCard.setAttribute('data-aos-delay', (index * 100).toString());
+
+            imageCard.innerHTML = `
+                <div class="gallery-card" onclick="window.contentManager.openImageModal(${actualIndex})">
+                    <div class="gallery-image-container">
+                        <img src="assets/img/gallery/${image.filename}" 
+                             alt="RENK Galeri ${actualIndex + 1}" 
+                             class="gallery-image"
+                             loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-overlay-content">
+                                <i class="fas fa-expand text-white"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-info">
+                        <small class="gallery-photographer">${image.photographer}</small>
+                    </div>
+                </div>
+            `;
+
+            container.appendChild(imageCard);
+        });
+
+        // Handle load more button
+        const loadMoreBtn = document.getElementById('load-more-gallery');
+        if (endIndex >= images.length) {
+            loadMoreBtn.classList.add('d-none');
+        } else {
+            loadMoreBtn.classList.remove('d-none');
+            loadMoreBtn.onclick = () => this.renderGalleryImages(container, images, galleryData, endIndex, batchSize);
+        }
+
+        // Store images for modal navigation
+        this.galleryImages = images;
+
+        // Refresh AOS animations
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+    }
+
+    // Open image modal
+    openImageModal(imageIndex) {
+        console.log('Opening image modal for index:', imageIndex);
+        
+        // Check if galleryImages exists
+        if (!this.galleryImages || !Array.isArray(this.galleryImages)) {
+            console.error('Gallery images not loaded yet');
+            return;
+        }
+        
+        const image = this.galleryImages[imageIndex];
+        if (!image) {
+            console.error('Image not found at index:', imageIndex);
+            return;
+        }
+        
+        console.log('Opening image:', image);
+
+        // Get modal elements
+        const modal = document.getElementById('imageModal');
+        const modalTitle = document.getElementById('imageModalTitle');
+        const modalImage = document.getElementById('modalImage');
+        const imageDescription = document.getElementById('imageDescription');
+        const imagePhotographer = document.getElementById('imagePhotographer');
+        const imageCounter = document.getElementById('imageCounter');
+        const prevBtn = document.getElementById('prevImageBtn');
+        const nextBtn = document.getElementById('nextImageBtn');
+
+        if (!modal) {
+            console.error('Image modal element not found');
+            window.open(`assets/img/gallery/${image.filename}`, '_blank');
+            return;
+        }
+
+        // Set content
+        if (modalTitle) modalTitle.textContent = `RENK Galeri - ${imageIndex + 1}`;
+        if (modalImage) {
+            modalImage.src = `assets/img/gallery/${image.filename}`;
+            modalImage.alt = `RENK Galeri ${imageIndex + 1}`;
+        }
+        if (imageDescription) imageDescription.textContent = '';
+        if (imagePhotographer) imagePhotographer.textContent = `Foto: ${image.photographer}`;
+        if (imageCounter) imageCounter.textContent = `${imageIndex + 1} / ${this.galleryImages.length}`;
+
+        // Set navigation
+        if (prevBtn) {
+            prevBtn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const prevIndex = imageIndex > 0 ? imageIndex - 1 : this.galleryImages.length - 1;
+                this.openImageModal(prevIndex);
+            };
+        }
+
+        if (nextBtn) {
+            nextBtn.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const nextIndex = imageIndex < this.galleryImages.length - 1 ? imageIndex + 1 : 0;
+                this.openImageModal(nextIndex);
+            };
+        }
+
+        // Show modal
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+
+        // Add keyboard event listener
+        document.addEventListener('keydown', this.handleKeyDown);
+
+        // Store current index
+        this.currentImageIndex = imageIndex;
+        
+        console.log('Custom modal opened successfully');
+    }
+
+    // Close image modal
+    closeImageModal() {
+        const modal = document.getElementById('imageModal');
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', this.handleKeyDown);
+        }
+    }
+
+    // Handle keyboard events for modal
+    handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+            this.closeImageModal();
+        } else if (e.key === 'ArrowLeft') {
+            const prevIndex = this.currentImageIndex > 0 ? this.currentImageIndex - 1 : this.galleryImages.length - 1;
+            this.openImageModal(prevIndex);
+        } else if (e.key === 'ArrowRight') {
+            const nextIndex = this.currentImageIndex < this.galleryImages.length - 1 ? this.currentImageIndex + 1 : 0;
+            this.openImageModal(nextIndex);
+        }
     }
 
 }

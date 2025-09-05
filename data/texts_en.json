@@ -16,8 +16,21 @@
         "text": "Renk"
       },
       {
+        "href": "#concerts",
+        "text": "Concerts"
+      },
+      {
+        "href": "#gallery",
+        "text": "Gallery"
+      },
+      {
         "href": "#music",
         "text": "Listen to Renk"
+      },
+      {
+        "href": "https://kiyi.renk.band",
+        "text": "➡️🚪 Kıyı",
+        "external": true
       }
     ]
   },
@@ -61,7 +74,7 @@
     "title": "Renk",
     "subtitle": " ",
     "description": "<b>art-rock band pushing the boundaries of music</b>",
-    "extendedDescription": "<p><b>Renk</b> is an <b>art-rock band</b> whose songs are a blend of melancholic and aggressive compositions with psychedelic elements. With an emphasis on visual experience as much as the musical, Renk strives to transmit emotions in every medium available.</p><br><p>The band's first single <b>'Sonsuz Karmaşa'</b> was released in 2016. The same year, the band made its <b>international debut in Gdansk, Poland</b> after touring the metropolitan cities of Turkey including Ankara, Istanbul, Eskişehir and Antalya.</p><br><p>Their latest release, <b>'Kıyı'</b>, shines as one of rare concept albums released in recent years. From hopeful melodies and dark ambient drones to uplifting progressive narratives and existential lyrics, Renk tells a <b>60 minutes long story of unhomeliness and estrangement with the world</b>.</p><br><h5><b>Band Members:</b></h5><p><b>Anıl Kahvecioğlu</b> - Vocals and Guitars<br><b>Gökhan Şensönmez</b> - Guitars<br><b>Kemal Türkeri</b> - Bass Guitars<br><b>Ekin Özek</b> - Saxophone & Keys<br><b>Eren Özgün</b> - Drums</p>"
+    "extendedDescription": "<p><b>Renk</b> is an <b>art-rock band</b> that seeks to make sense of the world and to tell its story.</p><br><p>Through its music and lyrics, it carries the weight of being human in this world, showing both its fragility and its beauty.</p><br><p>At the end of the day, when one asks “Is this what life was meant to be?”, Renk aims to answer: “Yes, this is what life was meant to be, and through it all, it was beautiful.”</p><br><p>Renk released its first single <b>Sonsuz Karmaşa</b> in 2016. In 2020, the band shared its first concept album, <b>Kıyı</b>, with listeners. After performing in major cities across Turkey, Renk took its first international step with a concert in Gdańsk, Poland.</p><br><h5><b>Band Members:</b></h5><p><b>Anıl Kahvecioğlu</b> – Vocals &amp; Guitar<br><b>Gökhan Şensönmez</b> – Guitar<br><b>Kemal Türkeri</b> – Bass Guitar<br><b>Ekin Özek</b> – Saxophone &amp; Keyboards<br><b>Eren Özgün</b> – Drums</p>"
   },
   "news": {
     "title": "News",
@@ -90,10 +103,40 @@
       }
     ]
   },
+  "concerts": {
+    "title": "Upcoming Concerts",
+    "subtitle": "Our upcoming concerts and events",
+    "items": [
+      {
+        "title": "Renk @ Kült Kavaklıdere (Unplugged)",
+        "location": "Ankara",
+        "date": "04.10.2025",
+        "time": "22:00",
+        "description": "Our first acoustic concert experience will take place at Kült Kavaklıdere on October 4th.",
+        "image": "assets/img/konserler/renk-headshots.png",
+        "ticketUrl": "#",
+        "ticketButtonText": "Coming Soon",
+        "venue": "Kült Kavaklıdere",
+        "status": "coming_soon"
+      },
+      {
+        "title": "Renk @ Kulüp Müjgan",
+        "location": "Ankara",
+        "date": "08.11.2025",
+        "time": "22:00",
+        "description": "An unforgettable night at Kulüp Müjgan, the meeting point for music enthusiasts in the heart of Ankara, Kızılay.",
+        "image": "assets/img/konserler/renk-headshots.png",
+        "ticketUrl": "https://kulupmujgan.com/products/renk-2?srsltid=AfmBOorrPjD49eRXhk2EuGoSd6zsep-ra6Bk7sg60YJEcpr-qsYBol1u",
+        "ticketButtonText": "Buy Tickets",
+        "venue": "Kulüp Müjgan",
+        "status": "available"
+      }
+    ]
+  },
   "music": {
     "title": "Listen to Renk",
     "subtitle": " ",
-    "albumsTitle": "Our Albums",
+    "albumsTitle": "Albums and Singles",
     "spotifyButtonText": "Listen on Spotify",
     "spotify": {
       "title": " ",
@@ -118,7 +161,23 @@
         "year": "2020",
         "description": " ",
         "cover": "assets/img/kiyi.jpg",
-        "spotifyUrl": "https://open.spotify.com/album/6PeoxRdSlmnG9Kh2NIxwX6?si=FbCUD7I7QsyqHo6xRizveg"
+        "spotifyUrl": "https://open.spotify.com/album/6PeoxRdSlmnG9Kh2NIxwX6?si=FbCUD7I7QsyqHo6xRizveg",
+        "listenUrl": "https://kiyi.renk.band",
+        "listenButtonText": "Listen"
+      },
+      {
+        "title": "Kırmızı",
+        "year": "2020", 
+        "description": " ",
+        "cover": "assets/img/06.png",
+        "spotifyUrl": "https://open.spotify.com/album/6Xtw7LJuASZyYmxxDYXRqQ?si=9_51jaWWRBWC5t2kD1mqYQ"
+      },
+      {
+        "title": "Özgürlük",
+        "year": "2020", 
+        "description": " ",
+        "cover": "assets/img/03.png",
+        "spotifyUrl": "https://open.spotify.com/album/476aa1yG3awyW9FF3edk2H?si=722a87bf124840b0"
       },
       {
         "title": "Sonsuz Karmaşa",
@@ -128,6 +187,16 @@
         "spotifyUrl": "https://open.spotify.com/album/5xKCpqIfzJOIJ9TNDFapfD?si=IpNvF8s2QASof3Tk7zOP3g"
       }
     ]
+  },
+  "gallery": {
+    "title": "Gallery",
+    "subtitle": " ",
+    "photographer": " ",
+    "viewImage": "View Image",
+    "closeImage": "Close",
+    "imageCounter": "{current} / {total}",
+    "loadMore": "Load More",
+    "noMoreImages": "All images shown"
   },
   "common": {
     "pageTitle": "RENK - Music Band",

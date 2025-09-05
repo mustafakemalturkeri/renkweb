@@ -149,42 +149,70 @@ function handleScrollClick(e) {
     e.preventDefault();
     
     const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
+    let targetElement = document.getElementById(targetId);
     
     console.log('🎯 Scroll click:', targetId, 'Element found:', !!targetElement);
     
+    // If target element doesn't exist, try to load it first (for dynamic content)
+    if (!targetElement && window.contentLoader) {
+        console.log('🔄 Target not found, attempting to load section:', targetId);
+        
+        // Load the section first
+        window.contentLoader.loadSection(targetId).then(() => {
+            // Try to find the element again after loading
+            setTimeout(() => {
+                targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    console.log('✅ Section loaded successfully, scrolling to:', targetId);
+                    scrollToElement(targetElement);
+                } else {
+                    console.warn('❌ Section still not found after loading:', targetId);
+                }
+            }, 500); // Give some time for content to render
+        }).catch(error => {
+            console.error('❌ Error loading section:', targetId, error);
+        });
+        
+        return; // Exit here, scrolling will happen after content loads
+    }
+    
     if (targetElement) {
-        // Calculate target position manually for better mobile compatibility
-        const rect = targetElement.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const targetPosition = rect.top + scrollTop - 70; // 70px offset for navbar
-        
-        console.log('📍 Scrolling to position:', targetPosition);
-        
-        // Try multiple scroll methods for maximum compatibility
-        try {
-            // Method 1: Modern smooth scroll
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-        } catch (e) {
-            console.log('🔄 Fallback scroll method');
-            // Method 2: Fallback for older browsers
-            smoothScrollTo(targetPosition);
-        }
-        
-        // Also update URL
-        window.history.pushState(null, null, this.getAttribute('href'));
-        
-        // Close mobile menu if open
-        const navbarCollapse = document.querySelector('.navbar-collapse');
-        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
-            bsCollapse.hide();
-        }
+        scrollToElement(targetElement);
     } else {
         console.warn('Target element not found:', targetId);
+    }
+}
+
+// Helper function to handle the actual scrolling
+function scrollToElement(targetElement) {
+    // Calculate target position manually for better mobile compatibility
+    const rect = targetElement.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const targetPosition = rect.top + scrollTop - 70; // 70px offset for navbar
+    
+    console.log('📍 Scrolling to position:', targetPosition);
+    
+    // Try multiple scroll methods for maximum compatibility
+    try {
+        // Method 1: Modern smooth scroll
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    } catch (e) {
+        console.log('🔄 Fallback scroll method');
+        // Method 2: Fallback for older browsers
+        smoothScrollTo(targetPosition);
+    }
+    
+    // Also update URL
+    window.history.pushState(null, null, '#' + targetElement.id);
+    
+    // Close mobile menu if open
+    const navbarCollapse = document.querySelector('.navbar-collapse');
+    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+        const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+        bsCollapse.hide();
     }
 }
 

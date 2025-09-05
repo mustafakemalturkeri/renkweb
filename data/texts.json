@@ -16,8 +16,21 @@
         "text": "Renk"
       },
       {
+        "href": "#concerts",
+        "text": "Konserler"
+      },
+      {
+        "href": "#gallery",
+        "text": "Galeri"
+      },
+      {
         "href": "#music",
         "text": "Renk'i Dinleyin"
+      },
+      {
+        "href": "https://kiyi.renk.band",
+        "text": "➡️🚪 Kıyı",
+        "external": true
       }
     ]
   },
@@ -61,7 +74,7 @@
     "title": "Renk",
     "subtitle": " ",
     "description": "<b>müziğin sınırlarını zorlayan art-rock grubu</b>",
-    "extendedDescription": "<p><b>Renk</b>, melankolik ve agresif kompozisyonları psikedelik unsurlarla harmanlayan bir <b>art-rock grubudur</b>. Müzikal deneyim kadar görsel deneyime de odaklanan Renk, mevcut her mecrada duygular iletmeye çalışır.</p><br><p>Grubun ilk single'ı <b>'Sonsuz Karmaşa'</b> 2016 yılında yayınlandı. Aynı yıl grup, Ankara, İstanbul, Eskişehir ve Antalya dahil Türkiye'nin büyük şehirlerinde turne yaptıktan sonra <b>Gdansk, Polonya'da uluslararası debutunu</b> yaptı.</p><br><p>Son çıkardıkları <b>'Kıyı'</b>, son yıllarda yayınlanan nadir konsept albümlerden biri olarak öne çıkıyor. Umut verici melodilerden karanlık ambient tonlarına, yükseltici progresif anlatılardan varoluşsal sözlere kadar Renk, <b>60 dakikalık evsizlik ve dünyaya yabancılaşma hikayesi</b> anlatıyor.</p><br><h5><b>Grup Üyeleri:</b></h5><p><b>Anıl Kahvecioğlu</b> - Vokal ve Gitar<br><b>Gökhan Şensönmez</b> - Gitar<br><b>Kemal Türkeri</b> - Bas Gitar<br><b>Ekin Özek</b> - Saksafon ve Klavye<br><b>Eren Özgün</b> - Davul</p>"
+    "extendedDescription": "<p><b>Renk</b>, dünyayı anlamlandırmaya ve anlatmaya çalışan bir <b>art-rock grubudur</b>.</p><br><p>Müziğinde ve sözlerinde insan olmanın ağırlığını taşır, kırılganlığını ve güzelliğini bir arada gösterir.</p><br><p>Günün sonunda “hayat bu muydu?” diye sorulduğunda, “hayat buydu ve her şeye rağmen çok güzeldi” diyebilmeyi amaçlar.</p><br><p>Renk, ilk teklisi <b>Sonsuz Karmaşa</b>’yı 2016’da yayımladı. 2020’de çıkan <b>Kıyı</b> albümü ise grubun ilk konsept çalışması olarak dinleyicilerle buluştu. Renk, Türkiye’nin büyük şehirlerinde sahne aldıktan sonra, Gdansk’ta verdiği konserle uluslararası ilk adımını attı.</p><br><h5><b>Grup Üyeleri:</b></h5><p><b>Anıl Kahvecioğlu</b> - Vokal &amp; Gitar<br><b>Gökhan Şensönmez</b> - Gitar<br><b>Kemal Türkeri</b> - Bas Gitar<br><b>Ekin Özek</b> - Saksafon &amp; Klavye<br><b>Eren Özgün</b> - Davul</p>"
   },
   "news": {
     "title": "Haberler",
@@ -90,10 +103,40 @@
       }
     ]
   },
+  "concerts": {
+    "title": "Yaklaşan Konserler",
+    "subtitle": "Yaklaşan konserlerimiz ve etkinliklerimiz",
+    "items": [
+      {
+        "title": "Renk @ Kült Kavaklıdere (Unplugged)",
+        "location": "Ankara",
+        "date": "04.10.2025",
+        "time": "22:00",
+        "description": "İlk defa deneyimleyeceğimiz akustik konserimiz 4 Ekim'de Kült Kavaklıdere'de gerçekleşecek.",
+        "image": "assets/img/konserler/renk-headshots.png",
+        "ticketUrl": "#",
+        "ticketButtonText": "Yakında",
+        "venue": "Kült Kavaklıdere",
+        "status": "coming_soon"
+      },
+      {
+        "title": "Renk @ Kulüp Müjgan",
+        "location": "Ankara",
+        "date": "08.11.2025",
+        "time": "21:00",
+        "description": "Yine Ankara'da Kulüp Müjgan'da unutumaz bir gece sizlerle.",
+        "image": "assets/img/konserler/renk-headshots.png",
+        "ticketUrl": "https://kulupmujgan.com/products/renk-2?srsltid=AfmBOorrPjD49eRXhk2EuGoSd6zsep-ra6Bk7sg60YJEcpr-qsYBol1u",
+        "ticketButtonText": "Bilet Al",
+        "venue": "Kulüp Müjgan",
+        "status": "available"
+      }
+    ]
+  },
   "music": {
     "title": "Renk'i Dinleyin",
     "subtitle": " ",
-    "albumsTitle": "Albümlerimiz",
+    "albumsTitle": "Albümler ve Tekliler",
     "spotifyButtonText": "Spotify'da Dinle",
     "spotify": {
       "title": " ",
@@ -108,7 +151,7 @@
       "channelUrl": "https://www.youtube.com/@renkofficial8596",
       "buttonText": "YouTube'da takip et!",
       "featuredVideo": {
-        "title": "En Son Klibimiz",
+        "title": " ",
         "embedCode": "<iframe width=\"100%\" height=\"315\" src=\"https://www.youtube.com/embed/kgEgMHl6x4c?si=BDhqMxKkpGM9X6AF\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" referrerpolicy=\"strict-origin-when-cross-origin\" allowfullscreen></iframe>"
       }
     },
@@ -118,7 +161,23 @@
         "year": "2020",
         "description": " ",
         "cover": "assets/img/kiyi.jpg",
-        "spotifyUrl": "https://open.spotify.com/album/6PeoxRdSlmnG9Kh2NIxwX6?si=FbCUD7I7QsyqHo6xRizveg"
+        "spotifyUrl": "https://open.spotify.com/album/6PeoxRdSlmnG9Kh2NIxwX6?si=FbCUD7I7QsyqHo6xRizveg",
+        "listenUrl": "https://kiyi.renk.band",
+        "listenButtonText": "Dinle"
+      },
+      {
+        "title": "Kırmızı",
+        "year": "2020", 
+        "description": " ",
+        "cover": "assets/img/06.png",
+        "spotifyUrl": "https://open.spotify.com/album/6Xtw7LJuASZyYmxxDYXRqQ?si=9_51jaWWRBWC5t2kD1mqYQ"
+      },
+      {
+        "title": "Özgürlük",
+        "year": "2020", 
+        "description": " ",
+        "cover": "assets/img/03.png",
+        "spotifyUrl": "https://open.spotify.com/album/476aa1yG3awyW9FF3edk2H?si=722a87bf124840b0"
       },
       {
         "title": "Sonsuz Karmaşa",
@@ -128,6 +187,16 @@
         "spotifyUrl": "https://open.spotify.com/album/5xKCpqIfzJOIJ9TNDFapfD?si=IpNvF8s2QASof3Tk7zOP3g"
       }
     ]
+  },
+  "gallery": {
+    "title": "Galeri",
+    "subtitle": " ",
+    "photographer": " ",
+    "viewImage": "Resmi Görüntüle",
+    "closeImage": "Kapat",
+    "imageCounter": "{current} / {total}",
+    "loadMore": "Daha Fazla Yükle",
+    "noMoreImages": "Tüm resimler gösteriliyor"
   },
   "common": {
     "pageTitle": "Renk",
