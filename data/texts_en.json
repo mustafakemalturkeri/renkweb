@@ -42,7 +42,7 @@
     "countdown": {
       "enabled": true,
       "targetDate": "2025-09-12T00:00:00",
-      "title": "Time left to Mükemmel Tekdüze",
+      "title": "Mükemmel Tekdüze",
       "description": " ",
       "labels": {
         "days": "Days",
@@ -156,6 +156,13 @@
       }
     },
     "albums": [
+      {
+        "title": "Mükemmel Tekdüze",
+        "year": "2025", 
+        "description": " ",
+        "cover": "assets/img/muko-teko.jpeg",
+        "spotifyUrl": "https://open.spotify.com/track/0hzdQMak0D5UP1BIrTxEQa?si=cb402d9db523419c"
+      },
       {
         "title": "Kıyı",
         "year": "2020",
