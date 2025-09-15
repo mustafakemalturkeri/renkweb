@@ -114,10 +114,10 @@
         "time": "21:30",
         "description": " ",
         "image": "assets/img/konserler/renk-kult.png",
-        "ticketUrl": "#",
-        "ticketButtonText": "Coming Soon",
+        "ticketUrl": "https://biletinial.com/tr-tr/muzik/renk-konseri",
+        "ticketButtonText": "Buy Tickets",
         "venue": "Kült Kavaklıdere",
-        "status": "coming_soon"
+        "status": "available"
       },
       {
         "title": "Renk @ Kulüp Müjgan",
