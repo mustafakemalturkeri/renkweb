@@ -41,8 +41,8 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2025-09-12T00:00:00",
-      "title": "Mükemmel Tekdüze",
+      "targetDate": "2025-10-03T00:00:00",
+      "title": "En Ağır Yük",
       "description": " ",
       "labels": {
         "days": "Days",

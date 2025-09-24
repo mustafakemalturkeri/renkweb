@@ -66,7 +66,7 @@ class ContentManager {
                                 <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">${heroData.title} <span class="hero-title-highlight" data-aos="fade-up" data-aos-delay="600">${heroData.titleHighlight}</span></h1>
                                 <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="900">${heroData.subtitle}</p>
                                 <div class="hero-accent-image" data-aos="zoom-in" data-aos-delay="300">
-                                    <img src="assets/img/muko-teko.jpeg" alt="RENK" class="muko-teko-image">
+                                    <img src="assets/img/en_agir_yuk.jpg" alt="RENK" class="muko-teko-image">
                                 </div>
                                 ${heroData.countdown && heroData.countdown.enabled ? `
                                 <div class="countdown-section" data-aos="fade-up" data-aos-delay="600">
