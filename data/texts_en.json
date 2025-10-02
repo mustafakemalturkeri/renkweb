@@ -157,6 +157,13 @@
     },
     "albums": [
       {
+        "title": "En Ağır Yük",
+        "year": "2025", 
+        "description": " ",
+        "cover": "assets/img/en_agir_yuk.jpg",
+        "spotifyUrl": "https://open.spotify.com/track/2RkKEB6VVN8XWwbqDdivK9?si=0ad86a4ea8494394"
+      },
+      {
         "title": "Mükemmel Tekdüze",
         "year": "2025", 
         "description": " ",
