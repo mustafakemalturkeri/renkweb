@@ -108,18 +108,6 @@
     "subtitle": "Yaklaşan konserlerimiz ve etkinliklerimiz",
     "items": [
       {
-        "title": "Renk @ Kült Kavaklıdere (Unplugged)",
-        "location": "Ankara",
-        "date": "04.10.2025",
-        "time": "21:30",
-        "description": " ",
-        "image": "assets/img/konserler/renk-kult.png",
-        "ticketUrl": "https://biletinial.com/tr-tr/muzik/renk-konseri",
-        "ticketButtonText": "Bilet Al",
-        "venue": "Kült Kavaklıdere",
-        "status": "available"
-      },
-      {
         "title": "Renk @ Kulüp Müjgan",
         "location": "Ankara",
         "date": "08.11.2025",
@@ -130,6 +118,18 @@
         "ticketButtonText": "Bilet Al",
         "venue": "Kulüp Müjgan",
         "status": "available"
+      },
+      {
+        "title": "Renk & Arubaluba (Camel Tribute Night) @ Gergedan Performance Hall, Kadıköy",
+        "location": "İstanbul",
+        "date": "13.12.2025",
+        "time": "20:00",
+        "description": " ",
+        "image": "assets/img/konserler/renk_aruba.png",
+        "ticketUrl": "#",
+        "ticketButtonText": "Biletler Yakında",
+        "venue": "Gergedan Performance Hall",
+        "status": "comingsoon"
       }
     ]
   },
