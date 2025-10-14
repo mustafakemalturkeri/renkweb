@@ -126,10 +126,10 @@
         "time": "20:00",
         "description": " ",
         "image": "assets/img/konserler/renk_aruba.png",
-        "ticketUrl": "#",
-        "ticketButtonText": "Coming Soon",
+        "ticketUrl": "https://www.bubilet.com.tr/istanbul/etkinlik/renk-arubaluba-camel-tribute-",
+        "ticketButtonText": "Buy Tickets",
         "venue": "Gergedan Performance Hall",
-        "status": "comingsoon"
+        "status": "available"
       }
     ]
   },
