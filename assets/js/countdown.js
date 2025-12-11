@@ -67,7 +67,7 @@ class CountdownTimer {
     }
 
     showExpiredMessage(element) {
-        element.innerHTML = '<div class="countdown-expired"><small>Konser başladı!</small></div>';
+        element.innerHTML = '<div></div>';
 
 
         // element.innerHTML = `

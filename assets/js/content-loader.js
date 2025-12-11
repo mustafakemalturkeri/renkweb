@@ -104,6 +104,11 @@ class ContentLoader {
         // Reinitialize interactive elements
         this.initializeInteractiveElements();
         
+        // Reinitialize scroll handlers after content reload
+        if (window.reinitializeScrollHandlers) {
+            window.reinitializeScrollHandlers();
+        }
+        
         console.log('Content reloaded successfully');
     }
 
@@ -214,6 +219,11 @@ class ContentLoader {
         
         // Dispatch content loaded event
         document.dispatchEvent(new CustomEvent('contentLoaded'));
+        
+        // Reinitialize scroll handlers after content load
+        if (window.reinitializeScrollHandlers) {
+            window.reinitializeScrollHandlers();
+        }
         
         console.log('All sections loaded successfully');
         
@@ -820,6 +830,29 @@ class ContentLoader {
         debugPanel.appendChild(closeBtn);
         
         document.body.appendChild(debugPanel);
+    }
+
+    // Initialize interactive elements (tooltips, carousels, etc.)
+    initializeInteractiveElements() {
+        console.log('Initializing interactive elements...');
+        
+        // Reinitialize AOS animations
+        if (window.AOS) {
+            window.AOS.refresh();
+        }
+        
+        // Reinitialize scroll animations
+        if (window.scrollAnimationManager) {
+            window.scrollAnimationManager.refresh();
+        }
+        
+        // Reinitialize tooltips if using Bootstrap
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        console.log('Interactive elements initialized');
     }
 
     async loadAboutContent() {

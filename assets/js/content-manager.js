@@ -66,7 +66,12 @@ class ContentManager {
                                 <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">${heroData.title} <span class="hero-title-highlight" data-aos="fade-up" data-aos-delay="600">${heroData.titleHighlight}</span></h1>
                                 <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="900">${heroData.subtitle}</p>
                                 <div class="hero-accent-image" data-aos="zoom-in" data-aos-delay="300">
-                                    <img src="assets/img/konserler/renk_aruba.png" alt="RENK" class="muko-teko-image">
+                                    ${heroData.countdown && heroData.countdown.link ? 
+                                        `<a href="${heroData.countdown.link}" target="_blank" rel="noopener noreferrer">
+                                            <img src="${heroData.countdown.image}" alt="RENK" class="muko-teko-image">
+                                        </a>` :
+                                        `<img src="${heroData.countdown && heroData.countdown.image}" alt="RENK" class="muko-teko-image">`
+                                    }
                                 </div>
                                 ${heroData.countdown && heroData.countdown.enabled ? `
                                 <div class="countdown-section" data-aos="fade-up" data-aos-delay="600">

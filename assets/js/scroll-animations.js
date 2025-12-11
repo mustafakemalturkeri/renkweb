@@ -44,27 +44,16 @@ class ScrollAnimationManager {
         const hash = window.location.hash;
         if (hash) {
             console.log('🔗 Page loaded with hash:', hash);
-            // Prevent immediate scroll to allow animations to set up
-            window.scrollTo(0, 0);
-            // Delay the scroll to the hash target
-            setTimeout(() => {
-                const targetElement = document.querySelector(hash);
-                if (targetElement) {
-                    // Smooth scroll to the target after animations are set up
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            }, 1500); // Wait for animations to be set up
+            // Don't prevent scroll - let the browser handle it naturally
+            // The animations will still work due to Intersection Observer
         }
     }
 
     animateElement(element) {
         console.log('🎯 Animating element:', element.className);
         
-        // Add base transition
-        element.style.transition = 'all 0.8s ease-out';
+        // Add base transition - reduced duration for faster, smoother feel
+        element.style.transition = 'all 0.5s ease-out';
         
         // Apply animation based on element type
         if (element.classList.contains('section')) {

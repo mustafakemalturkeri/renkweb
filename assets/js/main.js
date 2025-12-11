@@ -119,43 +119,67 @@ function initializeNavbarScrollEffect() {
     }, { passive: true });
 }
 
-// Initialize navigation scroll handlers
+// Initialize navigation scroll handlers with event delegation
+let scrollHandlersInitialized = false;
+
 function initializeNavigationScrollHandlers() {
-    console.log('🔗 Setting up navigation scroll handlers...');
+    // Only initialize once since we're using event delegation
+    if (scrollHandlersInitialized) {
+        console.log('🔗 Scroll handlers already initialized (using event delegation)');
+        return;
+    }
     
-    // Wait a bit for content to load
-    setTimeout(() => {
-        const scrollLinks = document.querySelectorAll('.nav-link[href^="#"], .btn-hero[href^="#"], .scroll-down[href^="#"]');
-        console.log('Found scroll links:', scrollLinks.length);
+    console.log('🔗 Setting up navigation scroll handlers with event delegation...');
+    
+    // Use event delegation on document body for better reliability
+    // This way, clicks on dynamically added links will also work
+    document.body.addEventListener('click', function(e) {
+        // Check if clicked element is a scroll link or is inside one
+        const link = e.target.closest('a[href^="#"]');
         
-        // Log each link found
-        scrollLinks.forEach((link, index) => {
-            console.log(`Link ${index + 1}:`, link.getAttribute('href'), link.textContent.trim());
-        });
-        
-        scrollLinks.forEach(link => {
-            // Remove any existing listeners first
-            link.removeEventListener('click', handleScrollClick);
+        if (link && link.getAttribute('href') !== '#') {
+            // Check if this is a scroll link (not just any anchor)
+            const href = link.getAttribute('href');
+            const targetId = href.substring(1);
             
-            link.addEventListener('click', handleScrollClick);
-        });
-        
-        console.log('✅ Navigation scroll handlers initialized');
-    }, 500); // Reduced timeout
+            // Only handle if target exists or could exist
+            if (targetId) {
+                console.log('🎯 Scrolling to:', targetId);
+                e.preventDefault();
+                handleScrollClick.call(link, e);
+            }
+        }
+    });
+    
+    scrollHandlersInitialized = true;
+    console.log('✅ Navigation scroll handlers initialized with event delegation');
+}
+
+// Function to manually reinitialize scroll handlers (can be called after content loads)
+window.reinitializeScrollHandlers = function() {
+    console.log('🔄 Reinitializing scroll handlers...');
+    // With event delegation, we don't need to do anything
+    // The listeners are already on document.body
+    console.log('✅ Scroll handlers ready (event delegation active)');
 }
 
 // Separate scroll click handler
 function handleScrollClick(e) {
-    e.preventDefault();
+    const href = this.getAttribute('href');
+    const targetId = href ? href.substring(1) : null;
     
-    const targetId = this.getAttribute('href').substring(1);
+    if (!targetId) {
+        console.warn('⚠️ No target ID found');
+        return;
+    }
+    
     let targetElement = document.getElementById(targetId);
     
-    console.log('🎯 Scroll click:', targetId, 'Element found:', !!targetElement);
+    console.log('📍 Target:', targetId, 'Found:', !!targetElement);
     
     // If target element doesn't exist, try to load it first (for dynamic content)
     if (!targetElement && window.contentLoader) {
-        console.log('🔄 Target not found, attempting to load section:', targetId);
+        console.log('🔄 Loading section:', targetId);
         
         // Load the section first
         window.contentLoader.loadSection(targetId).then(() => {
@@ -179,33 +203,21 @@ function handleScrollClick(e) {
     if (targetElement) {
         scrollToElement(targetElement);
     } else {
-        console.warn('Target element not found:', targetId);
+        console.warn('⚠️ Target element not found:', targetId);
     }
 }
 
 // Helper function to handle the actual scrolling
 function scrollToElement(targetElement) {
-    // Calculate target position manually for better mobile compatibility
-    const rect = targetElement.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const targetPosition = rect.top + scrollTop - 70; // 70px offset for navbar
+    console.log('📍 Scrolling to:', targetElement.id);
     
-    console.log('📍 Scrolling to position:', targetPosition);
+    // Simple and reliable - let CSS handle smooth scrolling
+    targetElement.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+    });
     
-    // Try multiple scroll methods for maximum compatibility
-    try {
-        // Method 1: Modern smooth scroll
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    } catch (e) {
-        console.log('🔄 Fallback scroll method');
-        // Method 2: Fallback for older browsers
-        smoothScrollTo(targetPosition);
-    }
-    
-    // Also update URL
+    // Update URL
     window.history.pushState(null, null, '#' + targetElement.id);
     
     // Close mobile menu if open
@@ -214,32 +226,6 @@ function scrollToElement(targetElement) {
         const bsCollapse = new bootstrap.Collapse(navbarCollapse);
         bsCollapse.hide();
     }
-}
-
-// Manual smooth scroll function for mobile compatibility
-function smoothScrollTo(targetPosition) {
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    const duration = 800; // 800ms for smooth animation
-    let start = null;
-    
-    function animation(currentTime) {
-        if (start === null) start = currentTime;
-        const timeElapsed = currentTime - start;
-        const run = ease(timeElapsed, startPosition, distance, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-    }
-    
-    // Easing function for smooth animation
-    function ease(t, b, c, d) {
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-    }
-    
-    requestAnimationFrame(animation);
 }
 
 // Check if DOM is already loaded or wait for it
@@ -474,6 +460,12 @@ async function handleLanguageClick(e) {
             // Update navigation and footer AGAIN after content reload
             setTimeout(() => {
                 updateNavigationAndFooter();
+                
+                // Reinitialize scroll handlers after everything is loaded
+                if (window.reinitializeScrollHandlers) {
+                    console.log('🔄 Reinitializing scroll handlers after language change...');
+                    window.reinitializeScrollHandlers();
+                }
             }, 500);
             
             console.log(`✅ Language switched to: ${targetLang}`);
@@ -534,10 +526,8 @@ function updateNavigationAndFooter() {
             navMenu.innerHTML = navHTML;
             console.log('✅ Navigation menu updated:', navData.items);
             
-            // Re-initialize scroll handlers after navigation update
-            setTimeout(() => {
-                initializeNavigationScrollHandlers();
-            }, 100);
+            // No need to re-initialize - event delegation handles it automatically
+            console.log('📝 Navigation updated - event delegation active');
         } else {
             console.error('❌ Navigation menu element not found');
         }
