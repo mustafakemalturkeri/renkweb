@@ -41,7 +41,7 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2025-12-13T21:00:00",
+      "targetDate": "2025-12-13T20:00:00",
       "title": "Renk & Arubaluba Kadıköy Konserine Kalan Süre:",
       "description": " ",
       "labels": {
