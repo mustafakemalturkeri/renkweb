@@ -41,11 +41,11 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2025-12-13T20:00:00",
-      "title": "Renk & Arubaluba Kadıköy Konseri:",
-      "image": "assets/img/konserler/renk_aruba.png",
-      "link": "https://www.bubilet.com.tr/istanbul/etkinlik/renk-arubaluba-camel-tribute-",
-      "description": " ",
+      "targetDate": "2025-12-26T19:00:00",
+      "title": "Süpriz bir etkinlik için kalan süre",
+      "image": "assets/img/renk-logo-white.png",
+      "link": "#",
+      "description": "(Detaylar yakında!)",
       "labels": {
         "days": "Gün",
         "hours": "Saat",

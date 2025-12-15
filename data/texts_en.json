@@ -42,9 +42,10 @@
     "countdown": {
       "enabled": true,
       "targetDate": "2025-12-26T19:00:00",
-      "title": "Countdown to a Surprise Event:",
+      "title": "Countdown to a Surprise Event",
       "image": "assets/img/renk-logo-white.png",
-      "description": " ",
+      "link": "#",
+      "description": "(Details coming soon!)",
       "labels": {
         "days": "Days",
         "hours": "Hours",
