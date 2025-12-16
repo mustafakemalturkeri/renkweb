@@ -42,7 +42,7 @@
     "countdown": {
       "enabled": true,
       "targetDate": "2025-12-26T19:00:00",
-      "title": "Süpriz bir etkinlik için kalan süre",
+      "title": "Sürpriz bir etkinlik için kalan süre",
       "image": "assets/img/renk-logo-white.png",
       "link": "#",
       "description": "(Detaylar yakında!)",
