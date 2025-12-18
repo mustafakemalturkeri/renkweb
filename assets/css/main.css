@@ -397,7 +397,7 @@ body.modal-open {
 
 .muko-teko-image {
   /*width: 600px;*/
-  max-width: 600px;
+  max-width: 300px;
   height: auto;
   border-radius: 15px;
   opacity: 0.9;
