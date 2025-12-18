@@ -41,16 +41,16 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2025-12-26T19:00:00",
-      "title": "Countdown to a Surprise Event",
-      "image": "assets/img/renk-logo-white.png",
+      "targetDate": "2025-12-26T20:00:00",
+      "title": "Countdown to METU Concert",
+      "image": "assets/img/konserler/renk_odtumt.jpeg",
       "link": "#",
-      "description": "(Details coming soon!)",
+      "description": "",
       "labels": {
         "days": "Days",
         "hours": "Hours",
-        "minutes": "Minutes",
-        "seconds": "Seconds"
+        "minutes": "Mins",
+        "seconds": "Secs"
       }
     },
     "socialMedia": {

@@ -41,11 +41,11 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2025-12-26T19:00:00",
-      "title": "Sürpriz bir etkinlik için kalan süre",
-      "image": "assets/img/renk-logo-white.png",
+      "targetDate": "2025-12-26T20:00:00",
+      "title": "ODTÜ Mimarlık Amfisi Konserine Geri Sayım",
+      "image": "assets/img/konserler/renk_odtumt.jpeg",
       "link": "#",
-      "description": "(Detaylar yakında!)",
+      "description": "",
       "labels": {
         "days": "Gün",
         "hours": "Saat",
