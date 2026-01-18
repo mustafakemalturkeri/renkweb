@@ -41,10 +41,10 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2025-12-26T20:00:00",
-      "title": "ODTÜ Mimarlık Amfisi Konserine Geri Sayım",
-      "image": "assets/img/konserler/renk_odtumt.jpeg",
-      "link": "#",
+      "targetDate": "2026-02-06T20:00:00",
+      "title": "Renk Konseri'ne Geri Sayım",
+      "image": "assets/img/konserler/mujgan_6subat.png",
+      "link": "https://kulupmujgan.com/products/renk-3?srsltid=AfmBOopfpXCOheK4BazCaJafwCCcgVGDFp5U0v4j5-uMSMv6SGCb4P27",
       "description": "",
       "labels": {
         "days": "Gün",
@@ -111,15 +111,15 @@
     "items": [
 
       {
-        "title": "Renk & Arubaluba (Camel Tribute Night) @ Gergedan Performance Hall, Kadıköy",
-        "location": "İstanbul",
-        "date": "13.12.2025",
+        "title": "Renk @ Kulüp Müjgan",
+        "location": "Ankara",
+        "date": "06.02.2025",
         "time": "20:00",
         "description": " ",
-        "image": "assets/img/konserler/renk_aruba.png",
-        "ticketUrl": "https://www.bubilet.com.tr/istanbul/etkinlik/renk-arubaluba-camel-tribute-",
+        "image": "assets/img/konserler/renk-kult.png",
+        "ticketUrl": "https://kulupmujgan.com/products/renk-3?srsltid=AfmBOopfpXCOheK4BazCaJafwCCcgVGDFp5U0v4j5-uMSMv6SGCb4P27",
         "ticketButtonText": "Bilet Al",
-        "venue": "Gergedan Performance Hall",
+        "venue": "Kulüp Müjgan",
         "status": "available"
       }
     ]
