@@ -41,10 +41,10 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2026-02-06T20:00:00",
+      "targetDate": "2026-03-14T21:00:00",
       "title": "Countdown to Renk Concert",
-      "image": "assets/img/konserler/mujgan_6subat.png",
-      "link": "https://kulupmujgan.com/products/renk-3?srsltid=AfmBOopfpXCOheK4BazCaJafwCCcgVGDFp5U0v4j5-uMSMv6SGCb4P27",
+      "image": "assets/img/konserler/renk-kult.png",
+      "link": "https://biletinial.com/tr-tr/muzik/renk",
       "description": "",
       "labels": {
         "days": "Days",
@@ -111,15 +111,15 @@
     "items": [
 
       {
-        "title": "Renk @ Kulüp Müjgan",
+        "title": "Renk (Acoustic) @ Kült Kavaklıdere",
         "location": "Ankara",
-        "date": "06.02.2025",
-        "time": "20:00",
+        "date": "14.03.2026",
+        "time": "21:00",
         "description": " ",
         "image": "assets/img/konserler/renk-kult.png",
-        "ticketUrl": "https://kulupmujgan.com/products/renk-3?srsltid=AfmBOopfpXCOheK4BazCaJafwCCcgVGDFp5U0v4j5-uMSMv6SGCb4P27",
+        "ticketUrl": "https://biletinial.com/tr-tr/muzik/renk",
         "ticketButtonText": "Buy Tickets",
-        "venue": "Kulüp Müjgan",
+        "venue": "Kült Kavaklıdere",
         "status": "available"
       }
 
