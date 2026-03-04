@@ -41,11 +41,11 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2026-03-14T21:00:00",
-      "title": "Renk Akustik Konserine Geri Sayım",
+      "targetDate": "2026-03-14T21:30:00",
+      "title": "Renk (Akustik) @ Kült Kavaklıdere",
       "image": "assets/img/konserler/renk_kult_14_mart.png",
       "link": "https://biletinial.com/tr-tr/muzik/renk",
-      "description": "",
+      "description": "Biletler için görsele tıklayın!",
       "labels": {
         "days": "Gün",
         "hours": "Saat",
@@ -114,7 +114,7 @@
         "title": "Renk (Akustik) @ Kült Kavaklıdere",
         "location": "Ankara",
         "date": "14.03.2026",
-        "time": "21:00",
+        "time": "21:30",
         "description": " ",
         "image": "assets/img/konserler/renk-kult.png",
         "ticketUrl": "https://biletinial.com/tr-tr/muzik/renk",
