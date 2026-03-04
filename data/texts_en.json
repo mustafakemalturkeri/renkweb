@@ -42,8 +42,8 @@
     "countdown": {
       "enabled": true,
       "targetDate": "2026-03-14T21:00:00",
-      "title": "Countdown to Renk Concert (Acoustic) @ Kült Kavaklıdere",
-      "image": "assets/img/konserler/renk-kult.png",
+      "title": "Countdown to Renk Acoustic Concert",
+      "image": "assets/img/konserler/renk_kult_14_mart.png",
       "link": "https://biletinial.com/tr-tr/muzik/renk",
       "description": "",
       "labels": {

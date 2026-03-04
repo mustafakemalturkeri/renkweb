@@ -42,8 +42,8 @@
     "countdown": {
       "enabled": true,
       "targetDate": "2026-03-14T21:00:00",
-      "title": "Renk (Akustik) @ Kült Kavaklıdere Konserine Geri Sayım",
-      "image": "assets/img/konserler/renk-kult.png",
+      "title": "Renk Akustik Konserine Geri Sayım",
+      "image": "assets/img/konserler/renk_kult_14_mart.png",
       "link": "https://biletinial.com/tr-tr/muzik/renk",
       "description": "",
       "labels": {
