@@ -41,10 +41,10 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2026-03-14T21:30:00",
-      "title": "Renk (Akustik) @ Kült Kavaklıdere",
-      "image": "assets/img/konserler/renk_kult_14_mart.png",
-      "link": "https://biletinial.com/tr-tr/muzik/renk",
+      "targetDate": "2026-05-16T21:30:00",
+      "title": "King Crimson & Camel Tribute",
+      "image": "assets/img/konserler/kc_camel_kult.jpeg",
+      "link": "https://biletinial.com/en-tr/muzik/king-crimson-camel-tribute",
       "description": "Biletler için görsele tıklayın!",
       "labels": {
         "days": "Gün",
@@ -111,13 +111,13 @@
     "items": [
 
       {
-        "title": "Renk (Akustik) @ Kült Kavaklıdere",
+        "title": "King Crimson & Camel Tribute",
         "location": "Ankara",
-        "date": "14.03.2026",
+        "date": "16.05.2026",
         "time": "21:30",
         "description": " ",
-        "image": "assets/img/konserler/renk-kult.png",
-        "ticketUrl": "https://biletinial.com/tr-tr/muzik/renk",
+        "image": "assets/img/konserler/kc_camel_kult.jpeg",
+        "ticketUrl": "https://biletinial.com/en-tr/muzik/king-crimson-camel-tribute",
         "ticketButtonText": "Bilet Al",
         "venue": "Kült Kavaklıdere",
         "status": "available"
