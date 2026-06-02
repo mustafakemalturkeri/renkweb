@@ -41,11 +41,11 @@
     "videoSource": "assets/img/renk.mp4",
     "countdown": {
       "enabled": true,
-      "targetDate": "2026-05-16T21:30:00",
-      "title": "King Crimson & Camel Tribute",
-      "image": "assets/img/konserler/kc_camel_kult.jpeg",
-      "link": "https://biletinial.com/en-tr/muzik/king-crimson-camel-tribute",
-      "description": "Biletler için görsele tıklayın!",
+      "targetDate": "2026-06-10T20:30:00",
+      "title": "King Crimson & Camel Tribute #2",
+      "image": "assets/img/konserler/renk_aruba_camel_kc_260610.png",
+      "link": "#",
+      "description": "Biletler çok yakında!",
       "labels": {
         "days": "Gün",
         "hours": "Saat",
@@ -111,16 +111,16 @@
     "items": [
 
       {
-        "title": "King Crimson & Camel Tribute",
+        "title": "King Crimson & Camel Tribute #2",
         "location": "Ankara",
-        "date": "16.05.2026",
-        "time": "21:30",
+        "date": "10.06.2026",
+        "time": "20:30",
         "description": " ",
-        "image": "assets/img/konserler/kc_camel_kult.jpeg",
-        "ticketUrl": "https://biletinial.com/en-tr/muzik/king-crimson-camel-tribute",
-        "ticketButtonText": "Bilet Al",
-        "venue": "Kült Kavaklıdere",
-        "status": "available"
+        "image": "assets/img/konserler/renk_aruba_camel_kc_260610.png",
+        "ticketUrl": "#",
+        "ticketButtonText": "Biletler Çok Yakında",
+        "venue": "Tosca Play",
+        "status": "coming-soon"
       }
     ]
   },
