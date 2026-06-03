@@ -44,8 +44,8 @@
       "targetDate": "2026-06-10T20:30:00",
       "title": "King Crimson & Camel Tribute #2",
       "image": "assets/img/konserler/renk_aruba_camel_kc_260610.png",
-      "link": "#",
-      "description": "Biletler çok yakında!",
+      "link": "https://www.bubilet.com.tr/ankara/etkinlik/king-crimson-camel-tribute-by-arubaluba-renk-",
+      "description": "Bilet almak için görsele tıklayın!",
       "labels": {
         "days": "Gün",
         "hours": "Saat",
@@ -117,10 +117,10 @@
         "time": "20:30",
         "description": " ",
         "image": "assets/img/konserler/renk_aruba_camel_kc_260610.png",
-        "ticketUrl": "#",
-        "ticketButtonText": "Biletler Çok Yakında",
+        "ticketUrl": "https://www.bubilet.com.tr/ankara/etkinlik/king-crimson-camel-tribute-by-arubaluba-renk-",
+        "ticketButtonText": "Bilet Al",
         "venue": "Tosca Play",
-        "status": "coming-soon"
+        "status": "available"
       }
     ]
   },
