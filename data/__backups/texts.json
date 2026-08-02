@@ -110,6 +110,18 @@
     "subtitle": "Yaklaşan konserlerimiz ve etkinliklerimiz",
     "items": [
 
+      {
+        "title": "King Crimson & Camel Tribute #2",
+        "location": "Ankara",
+        "date": "10.06.2026",
+        "time": "20:30",
+        "description": " ",
+        "image": "assets/img/konserler/renk_aruba_camel_kc_260610.png",
+        "ticketUrl": "https://www.bubilet.com.tr/ankara/etkinlik/king-crimson-camel-tribute-by-arubaluba-renk-",
+        "ticketButtonText": "Bilet Al",
+        "venue": "Tosca Play",
+        "status": "available"
+      }
     ]
   },
   "music": {

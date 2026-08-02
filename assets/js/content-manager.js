@@ -577,7 +577,7 @@ class ContentManager {
                     <div class="col-12 text-center">
                         <div class="no-concerts">
                             <i class="fas fa-music fa-3x mb-3" style="color: var(--color-secondary);"></i>
-                            <p class="lead">Yakında konser duyurularımız burada olacak!</p>
+                            <p class="lead">-</p>
                         </div>
                     </div>
                 </div>
