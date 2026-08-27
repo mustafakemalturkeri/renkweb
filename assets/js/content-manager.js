@@ -200,6 +200,23 @@ class ContentManager {
         return currentLang === 'en' ? 'Details' : 'Detaylar';
     }
 
+    // Get "coming soon" label based on language
+    getComingSoonText() {
+        const musicData = this.getContent('music');
+        if (musicData && musicData.comingSoonText) {
+            return musicData.comingSoonText;
+        }
+        const commonData = window.textManager && window.textManager.getText ? window.textManager.getText('common') : null;
+        if (commonData && commonData.comingSoon) {
+            return commonData.comingSoon;
+        }
+        let currentLang = 'en'; // default
+        if (window.textManager && window.textManager.getCurrentLanguage) {
+            currentLang = window.textManager.getCurrentLanguage();
+        }
+        return currentLang === 'en' ? 'Coming Soon' : 'Çok Yakında';
+    }
+
     // Generate Projects HTML
     generateProjectsHTML() {
         console.log('🔥 generateProjectsHTML called!');
@@ -714,17 +731,35 @@ class ContentManager {
         `;
         
         if (musicData.albums) {
+            const comingSoonText = this.getComingSoonText();
+            const isPlaceholderUrl = (url) => !url || url.trim() === '' || url.trim() === '#';
+
             musicData.albums.forEach((album, index) => {
                 // Kıyı albümü için özel handling
                 const isKiyiAlbum = album.title === 'Kıyı';
-                const clickUrl = isKiyiAlbum && album.listenUrl ? album.listenUrl : album.spotifyUrl;
-                const overlayContent = isKiyiAlbum && album.listenUrl ? 
-                    `<div class="album-overlay album-overlay-kiyi"><i class="fas fa-play"></i><span>${album.listenButtonText || 'Dinle'}</span></div>` :
-                    (album.spotifyUrl ? `<div class="album-overlay"><i class="fab fa-spotify"></i><span>${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</span></div>` : '');
-                
+                const spotifyUrl = isPlaceholderUrl(album.spotifyUrl) ? null : album.spotifyUrl;
+                const listenUrl = isPlaceholderUrl(album.listenUrl) ? null : album.listenUrl;
+                const clickUrl = isKiyiAlbum && listenUrl ? listenUrl : spotifyUrl;
+                // Linki olmayan (veya "#") albümler "Çok Yakında" olarak gösterilir
+                const isComingSoon = !clickUrl;
+
+                let overlayContent = '';
+                if (isComingSoon) {
+                    overlayContent = `<div class="album-overlay album-overlay-soon"><i class="fas fa-hourglass-half"></i><span>${comingSoonText}</span></div>`;
+                } else if (isKiyiAlbum && listenUrl) {
+                    overlayContent = `<div class="album-overlay album-overlay-kiyi"><i class="fas fa-play"></i><span>${album.listenButtonText || 'Dinle'}</span></div>`;
+                } else if (spotifyUrl) {
+                    overlayContent = `<div class="album-overlay"><i class="fab fa-spotify"></i><span>${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</span></div>`;
+                }
+
+                const buttonsContent = isComingSoon
+                    ? `<span class="btn btn-coming-soon btn-sm mt-2"><i class="fas fa-hourglass-half"></i> ${comingSoonText}</span>`
+                    : `${spotifyUrl ? `<a href="${spotifyUrl}" target="_blank" class="btn btn-spotify btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-spotify"></i> ${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</a>` : ''}
+                                    ${listenUrl ? `<a href="${listenUrl}" target="_blank" class="btn btn-primary btn-sm mt-2" onclick="event.stopPropagation();"><i class="fas fa-play"></i> ${album.listenButtonText || 'Dinle'}</a>` : ''}`;
+
                 const albumContent = `
                     <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="${index * 100}">
-                        <div class="album-card${clickUrl ? ' clickable-album' : ''}${isKiyiAlbum ? ' kiyi-album' : ''}" ${clickUrl ? `onclick="window.open('${clickUrl}', '_blank')" style="cursor: pointer;"` : ''}>
+                        <div class="album-card${clickUrl ? ' clickable-album' : ''}${isKiyiAlbum ? ' kiyi-album' : ''}${isComingSoon ? ' coming-soon-album' : ''}" ${clickUrl ? `onclick="window.open('${clickUrl}', '_blank')" style="cursor: pointer;"` : ''}>
                             <div class="album-cover">
                                 <img src="${album.cover}" alt="${album.title}" class="img-fluid">
                                 ${overlayContent}
@@ -734,8 +769,7 @@ class ContentManager {
                                 <p class="album-year">${album.year}</p>
                                 <p class="album-description">${album.description}</p>
                                 <div class="album-buttons">
-                                    ${album.spotifyUrl ? `<a href="${album.spotifyUrl}" target="_blank" class="btn btn-spotify btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-spotify"></i> ${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</a>` : ''}
-                                    ${album.listenUrl ? `<a href="${album.listenUrl}" target="_blank" class="btn btn-primary btn-sm mt-2" onclick="event.stopPropagation();"><i class="fas fa-play"></i> ${album.listenButtonText || 'Dinle'}</a>` : ''}
+                                    ${buttonsContent}
                                 </div>
                             </div>
                         </div>

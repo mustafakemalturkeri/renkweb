@@ -44,7 +44,7 @@
       "targetDate": "2026-08-28T00:00:00",
       "title": "Countdown to our new single",
       "image": "assets/img/ayin.jpg",
-      "link": "#",
+      "link": "https://open.spotify.com/album/4e5eF8VfP6902yxblf4M0K",
       "description": " ",
       "labels": {
         "days": "Days",
@@ -87,37 +87,44 @@
         "date": "August 15, 2025",
         "description": "After a long period of work, our new album 'Renkler' has taken its place on all digital platforms. In this 10-track album, we have further developed our unique Renk sound by blending different music genres.",
         "image": "assets/img/news-1.jpg",
-        "tags": ["Album", "New Release"]
+        "tags": [
+          "Album",
+          "New Release"
+        ]
       },
       {
         "title": "Istanbul Concert Received Great Interest",
-        "date": "August 10, 2025", 
+        "date": "August 10, 2025",
         "description": "Our concert in Istanbul brought together thousands of music lovers. We had an unforgettable night and thank all participants.",
         "image": "assets/img/news-2.jpg",
-        "tags": ["Concert", "Istanbul"]
+        "tags": [
+          "Concert",
+          "Istanbul"
+        ]
       },
       {
         "title": "Ankara and Izmir Concerts Announced",
         "date": "August 5, 2025",
         "description": "We will meet with our fans in Ankara and Izmir in September. Tickets will be on sale very soon, stay tuned!",
-        "image": "assets/img/news-3.jpg", 
-        "tags": ["Concert", "Announcement"]
+        "image": "assets/img/news-3.jpg",
+        "tags": [
+          "Concert",
+          "Announcement"
+        ]
       }
     ]
   },
   "concerts": {
     "title": "Upcoming Concerts",
     "subtitle": "Our upcoming concerts and events",
-    "items": [
-
-
-    ]
+    "items": []
   },
   "music": {
     "title": "Listen to Renk",
     "subtitle": " ",
     "albumsTitle": "Albums and Singles",
     "spotifyButtonText": "Listen on Spotify",
+    "comingSoonText": "Coming Soon",
     "spotify": {
       "title": " ",
       "description": " ",
@@ -126,7 +133,7 @@
       "embedCode": "<iframe data-testid=\"embed-iframe\" style=\"border-radius:12px\" src=\"https://open.spotify.com/embed/artist/6YZaLDbJe7y0qfFp4CnH4K?utm_source=generator&theme=0\" width=\"100%\" height=\"352\" frameBorder=\"0\" allowfullscreen=\"\" allow=\"autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture\" loading=\"lazy\"></iframe>"
     },
     "youtube": {
-      "title": " ", 
+      "title": " ",
       "description": " ",
       "channelUrl": "https://www.youtube.com/@renkofficial8596",
       "buttonText": "Follow on YouTube!",
@@ -137,18 +144,32 @@
     },
     "albums": [
       {
-        "title": "En Ağır Yük",
-        "year": "2025", 
+        "title": "Yalın Dünya",
+        "year": "2026",
         "description": " ",
-        "cover": "assets/img/en_agir_yuk.jpg",
-        "spotifyUrl": "https://open.spotify.com/track/2RkKEB6VVN8XWwbqDdivK9?si=0ad86a4ea8494394"
+        "cover": "assets/img/yalin_dunya.jpg",
+        "spotifyUrl": "#"
       },
       {
-        "title": "Mükemmel Tekdüze",
-        "year": "2025", 
+        "title": "Ayin I",
+        "year": "2026",
+        "description": " ",
+        "cover": "assets/img/ayin.jpg",
+        "spotifyUrl": "https://open.spotify.com/album/4e5eF8VfP6902yxblf4M0K"
+      },
+      {
+        "title": "En Ağır Yük (Remastered - Coming Soon)",
+        "year": "2026",
+        "description": " ",
+        "cover": "assets/img/en_agir_yuk.jpg",
+        "spotifyUrl": "#"
+      },
+      {
+        "title": "Mükemmel Tekdüze (Remastered - Coming Soon)",
+        "year": "2026",
         "description": " ",
         "cover": "assets/img/muko-teko.jpeg",
-        "spotifyUrl": "https://open.spotify.com/track/0hzdQMak0D5UP1BIrTxEQa?si=cb402d9db523419c"
+        "spotifyUrl": "#"
       },
       {
         "title": "Kıyı",
@@ -161,21 +182,21 @@
       },
       {
         "title": "Kırmızı",
-        "year": "2020", 
+        "year": "2020",
         "description": " ",
         "cover": "assets/img/06.png",
         "spotifyUrl": "https://open.spotify.com/album/6Xtw7LJuASZyYmxxDYXRqQ?si=9_51jaWWRBWC5t2kD1mqYQ"
       },
       {
         "title": "Özgürlük",
-        "year": "2020", 
+        "year": "2020",
         "description": " ",
         "cover": "assets/img/03.png",
         "spotifyUrl": "https://open.spotify.com/album/476aa1yG3awyW9FF3edk2H?si=722a87bf124840b0"
       },
       {
         "title": "Sonsuz Karmaşa",
-        "year": "2016", 
+        "year": "2016",
         "description": " ",
         "cover": "assets/img/sonsuz-karmasa.jpg",
         "spotifyUrl": "https://open.spotify.com/album/5xKCpqIfzJOIJ9TNDFapfD?si=IpNvF8s2QASof3Tk7zOP3g"
