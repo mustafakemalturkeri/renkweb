@@ -738,8 +738,10 @@ class ContentManager {
                 // Kıyı albümü için özel handling
                 const isKiyiAlbum = album.title === 'Kıyı';
                 const spotifyUrl = isPlaceholderUrl(album.spotifyUrl) ? null : album.spotifyUrl;
+                const youtubeUrl = isPlaceholderUrl(album.youtubeUrl) ? null : album.youtubeUrl;
                 const listenUrl = isPlaceholderUrl(album.listenUrl) ? null : album.listenUrl;
-                const clickUrl = isKiyiAlbum && listenUrl ? listenUrl : spotifyUrl;
+                const youtubeButtonText = album.youtubeButtonText || musicData.youtubeButtonText || 'YouTube\'da İzle';
+                const clickUrl = (isKiyiAlbum && listenUrl) ? listenUrl : (spotifyUrl || youtubeUrl);
                 // Linki olmayan (veya "#") albümler "Çok Yakında" olarak gösterilir
                 const isComingSoon = !clickUrl;
 
@@ -750,11 +752,14 @@ class ContentManager {
                     overlayContent = `<div class="album-overlay album-overlay-kiyi"><i class="fas fa-play"></i><span>${album.listenButtonText || 'Dinle'}</span></div>`;
                 } else if (spotifyUrl) {
                     overlayContent = `<div class="album-overlay"><i class="fab fa-spotify"></i><span>${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</span></div>`;
+                } else if (youtubeUrl) {
+                    overlayContent = `<div class="album-overlay album-overlay-youtube"><i class="fab fa-youtube"></i><span>${youtubeButtonText}</span></div>`;
                 }
 
                 const buttonsContent = isComingSoon
                     ? `<span class="btn btn-coming-soon btn-sm mt-2"><i class="fas fa-hourglass-half"></i> ${comingSoonText}</span>`
                     : `${spotifyUrl ? `<a href="${spotifyUrl}" target="_blank" class="btn btn-spotify btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-spotify"></i> ${musicData.spotifyButtonText || 'Spotify\'da Dinle'}</a>` : ''}
+                                    ${youtubeUrl ? `<a href="${youtubeUrl}" target="_blank" class="btn btn-youtube btn-sm mt-2" onclick="event.stopPropagation();"><i class="fab fa-youtube"></i> ${youtubeButtonText}</a>` : ''}
                                     ${listenUrl ? `<a href="${listenUrl}" target="_blank" class="btn btn-primary btn-sm mt-2" onclick="event.stopPropagation();"><i class="fas fa-play"></i> ${album.listenButtonText || 'Dinle'}</a>` : ''}`;
 
                 const albumContent = `

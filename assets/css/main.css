@@ -4421,6 +4421,39 @@ section#about.content-section {
     opacity: 1;
 }
 
+/* Albüm kartında YouTube linki */
+.album-overlay-youtube {
+    background: rgba(255, 0, 0, 0.85) !important;
+}
+
+.album-card .btn-youtube {
+    background: #FF0000;
+    border-color: #FF0000;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.album-card .btn-youtube:hover {
+    background: #cc0000;
+    border-color: #cc0000;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.album-buttons .btn-youtube {
+    padding: 12px 25px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    border-radius: 25px !important;
+    min-width: 140px !important;
+    height: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px;
+}
+
 /* Linki henüz olmayan albümler: "Çok Yakında" */
 .album-overlay-soon {
     background: rgba(40, 40, 40, 0.85) !important;

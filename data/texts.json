@@ -124,6 +124,7 @@
     "subtitle": " ",
     "albumsTitle": "Albümler ve Tekliler",
     "spotifyButtonText": "Spotify'da Dinle",
+    "youtubeButtonText": "YouTube'da Dinle",
     "comingSoonText": "Çok Yakında",
     "spotify": {
       "title": " ",
@@ -158,18 +159,18 @@
         "spotifyUrl": "https://open.spotify.com/album/4e5eF8VfP6902yxblf4M0K"
       },
       {
-        "title": "En Ağır Yük (Remaster - Çok Yakında)",
-        "year": "2026",
+        "title": "En Ağır Yük",
+        "year": "2025",
         "description": " ",
         "cover": "assets/img/en_agir_yuk.jpg",
-        "spotifyUrl": "#"
+        "youtubeUrl": "https://youtu.be/1nw2OkFuafw"
       },
       {
-        "title": "Mükemmel Tekdüze (Remaster - Çok Yakında)",
-        "year": "2026",
+        "title": "Mükemmel Tekdüze",
+        "year": "2025",
         "description": " ",
         "cover": "assets/img/muko-teko.jpeg",
-        "spotifyUrl": "#"
+        "youtubeUrl": "https://youtu.be/Y8C3yjFjLSc"
       },
       {
         "title": "Kıyı",
